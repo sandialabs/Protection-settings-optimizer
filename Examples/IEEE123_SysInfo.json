@@ -1,0 +1,2921 @@
+{
+    "Relays": [
+        {
+            "Name": "r1",
+            "Bus1": "149",
+            "Bus2": "1",
+            "MonitoredObj": "line.L115",
+            "Enabled": true
+        },
+        {
+            "Name": "rtl1",
+            "Bus1": "13",
+            "Bus2": "152",
+            "MonitoredObj": "line.sw2",
+            "Enabled": true
+        },
+        {
+            "Name": "r2",
+            "Bus1": "13",
+            "Bus2": "18",
+            "MonitoredObj": "line.L13",
+            "Enabled": true
+        },
+        {
+            "Name": "r3",
+            "Bus1": "18",
+            "Bus2": "21",
+            "MonitoredObj": "line.L19",
+            "Enabled": true
+        },
+        {
+            "Name": "rtl2",
+            "Bus1": "18",
+            "Bus2": "135",
+            "MonitoredObj": "line.sw3",
+            "Enabled": true
+        },
+        {
+            "Name": "r4",
+            "Bus1": "54",
+            "Bus2": "57",
+            "MonitoredObj": "line.L55",
+            "Enabled": true
+        },
+        {
+            "Name": "rtl4",
+            "Bus1": "60",
+            "Bus2": "160",
+            "MonitoredObj": "line.sw4",
+            "Enabled": true
+        },
+        {
+            "Name": "r5",
+            "Bus1": "67",
+            "Bus2": "72",
+            "MonitoredObj": "line.L67",
+            "Enabled": true
+        },
+        {
+            "Name": "r6",
+            "Bus1": "97",
+            "Bus2": "197",
+            "MonitoredObj": "line.sw5",
+            "Enabled": true
+        },
+        {
+            "Name": "rtl3",
+            "Bus1": "151",
+            "Bus2": "300",
+            "MonitoredObj": "line.sw7",
+            "Enabled": true
+        }
+    ],
+    "Recs": {},
+    "Fuses": {},
+    "Lines": [
+        {
+            "Name": "l115",
+            "Bus1": "149",
+            "Bus2": "1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.4,
+            "Rpu": 0.0346666668,
+            "Xpu": 0.08166666680000001
+        },
+        {
+            "Name": "l1",
+            "Bus1": "1.2",
+            "Bus2": "2.2",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.175,
+            "Rpu": 0.0440549242,
+            "Xpu": 0.044661458274999996
+        },
+        {
+            "Name": "l2",
+            "Bus1": "1.3",
+            "Bus2": "3.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.25,
+            "Rpu": 0.062935606,
+            "Xpu": 0.06380208325
+        },
+        {
+            "Name": "l3",
+            "Bus1": "1.1.2.3",
+            "Bus2": "7.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.3,
+            "Rpu": 0.0260000001,
+            "Xpu": 0.06125000009999999
+        },
+        {
+            "Name": "l4",
+            "Bus1": "3.3",
+            "Bus2": "4.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.2,
+            "Rpu": 0.05034848480000001,
+            "Xpu": 0.05104166660000001
+        },
+        {
+            "Name": "l5",
+            "Bus1": "3.3",
+            "Bus2": "5.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.325,
+            "Rpu": 0.08181628780000001,
+            "Xpu": 0.08294270822500001
+        },
+        {
+            "Name": "l6",
+            "Bus1": "5.3",
+            "Bus2": "6.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.25,
+            "Rpu": 0.062935606,
+            "Xpu": 0.06380208325
+        },
+        {
+            "Name": "l7",
+            "Bus1": "7.1.2.3",
+            "Bus2": "8.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.2,
+            "Rpu": 0.0173333334,
+            "Xpu": 0.040833333400000005
+        },
+        {
+            "Name": "l8",
+            "Bus1": "8.2",
+            "Bus2": "12.2",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.225,
+            "Rpu": 0.05664204540000001,
+            "Xpu": 0.057421874925000005
+        },
+        {
+            "Name": "l9",
+            "Bus1": "8.1",
+            "Bus2": "9.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.225,
+            "Rpu": 0.05664204540000001,
+            "Xpu": 0.057421874925000005
+        },
+        {
+            "Name": "l10",
+            "Bus1": "8.1.2.3",
+            "Bus2": "13.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.3,
+            "Rpu": 0.0260000001,
+            "Xpu": 0.06125000009999999
+        },
+        {
+            "Name": "l11",
+            "Bus1": "9r.1",
+            "Bus2": "14.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.425,
+            "Rpu": 0.1069905302,
+            "Xpu": 0.108463541525
+        },
+        {
+            "Name": "l12",
+            "Bus1": "13.3",
+            "Bus2": "34.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.15,
+            "Rpu": 0.0377613636,
+            "Xpu": 0.03828124995
+        },
+        {
+            "Name": "l13",
+            "Bus1": "13.1.2.3",
+            "Bus2": "18.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.825,
+            "Rpu": 0.0729062499,
+            "Xpu": 0.163781249775
+        },
+        {
+            "Name": "l14",
+            "Bus1": "14.1",
+            "Bus2": "11.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.25,
+            "Rpu": 0.062935606,
+            "Xpu": 0.06380208325
+        },
+        {
+            "Name": "l15",
+            "Bus1": "14.1",
+            "Bus2": "10.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.25,
+            "Rpu": 0.062935606,
+            "Xpu": 0.06380208325
+        },
+        {
+            "Name": "l16",
+            "Bus1": "15.3",
+            "Bus2": "16.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.375,
+            "Rpu": 0.09440340900000001,
+            "Xpu": 0.095703124875
+        },
+        {
+            "Name": "l17",
+            "Bus1": "15.3",
+            "Bus2": "17.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.35,
+            "Rpu": 0.0881098484,
+            "Xpu": 0.08932291654999999
+        },
+        {
+            "Name": "l18",
+            "Bus1": "18.1",
+            "Bus2": "19.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.25,
+            "Rpu": 0.062935606,
+            "Xpu": 0.06380208325
+        },
+        {
+            "Name": "l19",
+            "Bus1": "18.1.2.3",
+            "Bus2": "21.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.3,
+            "Rpu": 0.0265113636,
+            "Xpu": 0.0595568181
+        },
+        {
+            "Name": "l20",
+            "Bus1": "19.1",
+            "Bus2": "20.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.325,
+            "Rpu": 0.08181628780000001,
+            "Xpu": 0.08294270822500001
+        },
+        {
+            "Name": "l21",
+            "Bus1": "21.2",
+            "Bus2": "22.2",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.525,
+            "Rpu": 0.1321647726,
+            "Xpu": 0.133984374825
+        },
+        {
+            "Name": "l22",
+            "Bus1": "21.1.2.3",
+            "Bus2": "23.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.25,
+            "Rpu": 0.022092803,
+            "Xpu": 0.04963068175
+        },
+        {
+            "Name": "l23",
+            "Bus1": "23.3",
+            "Bus2": "24.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.55,
+            "Rpu": 0.13845833320000003,
+            "Xpu": 0.14036458315000003
+        },
+        {
+            "Name": "l24",
+            "Bus1": "23.1.2.3",
+            "Bus2": "25.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.275,
+            "Rpu": 0.024302083300000003,
+            "Xpu": 0.054593749925000004
+        },
+        {
+            "Name": "l25",
+            "Bus1": "25r.1.3",
+            "Bus2": "26.1.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "2",
+            "Length": 0.35,
+            "Rpu": 0.03033333345,
+            "Xpu": 0.07145833345
+        },
+        {
+            "Name": "l26",
+            "Bus1": "25.1.2.3",
+            "Bus2": "28.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.2,
+            "Rpu": 0.0176742424,
+            "Xpu": 0.039704545400000006
+        },
+        {
+            "Name": "l27",
+            "Bus1": "26.1.3",
+            "Bus2": "27.1.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "2",
+            "Length": 0.275,
+            "Rpu": 0.023833333425000002,
+            "Xpu": 0.05614583342500001
+        },
+        {
+            "Name": "l28",
+            "Bus1": "26.3",
+            "Bus2": "31.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.225,
+            "Rpu": 0.05664204540000001,
+            "Xpu": 0.057421874925000005
+        },
+        {
+            "Name": "l29",
+            "Bus1": "27.1",
+            "Bus2": "33.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.5,
+            "Rpu": 0.125871212,
+            "Xpu": 0.1276041665
+        },
+        {
+            "Name": "l30",
+            "Bus1": "28.1.2.3",
+            "Bus2": "29.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.3,
+            "Rpu": 0.0265113636,
+            "Xpu": 0.0595568181
+        },
+        {
+            "Name": "l31",
+            "Bus1": "29.1.2.3",
+            "Bus2": "30.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.35,
+            "Rpu": 0.0309299242,
+            "Xpu": 0.06948295445
+        },
+        {
+            "Name": "l32",
+            "Bus1": "30.1.2.3",
+            "Bus2": "250.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.2,
+            "Rpu": 0.0176742424,
+            "Xpu": 0.039704545400000006
+        },
+        {
+            "Name": "l33",
+            "Bus1": "31.3",
+            "Bus2": "32.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.3,
+            "Rpu": 0.0755227272,
+            "Xpu": 0.0765624999
+        },
+        {
+            "Name": "l34",
+            "Bus1": "34.3",
+            "Bus2": "15.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.1,
+            "Rpu": 0.025174242400000005,
+            "Xpu": 0.025520833300000004
+        },
+        {
+            "Name": "l35",
+            "Bus1": "35.1.2",
+            "Bus2": "36.1.2",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "2",
+            "Length": 0.65,
+            "Rpu": 0.05633333355,
+            "Xpu": 0.13270833355
+        },
+        {
+            "Name": "l36",
+            "Bus1": "35.1.2.3",
+            "Bus2": "40.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.25,
+            "Rpu": 0.02166666675,
+            "Xpu": 0.05104166675
+        },
+        {
+            "Name": "l37",
+            "Bus1": "36.1",
+            "Bus2": "37.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.3,
+            "Rpu": 0.0755227272,
+            "Xpu": 0.0765624999
+        },
+        {
+            "Name": "l38",
+            "Bus1": "36.2",
+            "Bus2": "38.2",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.25,
+            "Rpu": 0.062935606,
+            "Xpu": 0.06380208325
+        },
+        {
+            "Name": "l39",
+            "Bus1": "38.2",
+            "Bus2": "39.2",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.325,
+            "Rpu": 0.08181628780000001,
+            "Xpu": 0.08294270822500001
+        },
+        {
+            "Name": "l40",
+            "Bus1": "40.3",
+            "Bus2": "41.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.325,
+            "Rpu": 0.08181628780000001,
+            "Xpu": 0.08294270822500001
+        },
+        {
+            "Name": "l41",
+            "Bus1": "40.1.2.3",
+            "Bus2": "42.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.25,
+            "Rpu": 0.02166666675,
+            "Xpu": 0.05104166675
+        },
+        {
+            "Name": "l42",
+            "Bus1": "42.2",
+            "Bus2": "43.2",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.5,
+            "Rpu": 0.125871212,
+            "Xpu": 0.1276041665
+        },
+        {
+            "Name": "l43",
+            "Bus1": "42.1.2.3",
+            "Bus2": "44.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.2,
+            "Rpu": 0.0173333334,
+            "Xpu": 0.040833333400000005
+        },
+        {
+            "Name": "l44",
+            "Bus1": "44.1",
+            "Bus2": "45.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.2,
+            "Rpu": 0.05034848480000001,
+            "Xpu": 0.05104166660000001
+        },
+        {
+            "Name": "l45",
+            "Bus1": "44.1.2.3",
+            "Bus2": "47.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.25,
+            "Rpu": 0.02166666675,
+            "Xpu": 0.05104166675
+        },
+        {
+            "Name": "l46",
+            "Bus1": "45.1",
+            "Bus2": "46.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.3,
+            "Rpu": 0.0755227272,
+            "Xpu": 0.0765624999
+        },
+        {
+            "Name": "l47",
+            "Bus1": "47.1.2.3",
+            "Bus2": "48.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.15,
+            "Rpu": 0.01311079545,
+            "Xpu": 0.03025852275
+        },
+        {
+            "Name": "l48",
+            "Bus1": "47.1.2.3",
+            "Bus2": "49.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.25,
+            "Rpu": 0.02185132575,
+            "Xpu": 0.05043087125
+        },
+        {
+            "Name": "l49",
+            "Bus1": "49.1.2.3",
+            "Bus2": "50.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.25,
+            "Rpu": 0.02185132575,
+            "Xpu": 0.05043087125
+        },
+        {
+            "Name": "l50",
+            "Bus1": "50.1.2.3",
+            "Bus2": "51.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.25,
+            "Rpu": 0.02185132575,
+            "Xpu": 0.05043087125
+        },
+        {
+            "Name": "l51",
+            "Bus1": "51.1.2.3",
+            "Bus2": "151.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.5,
+            "Rpu": 0.0437026515,
+            "Xpu": 0.1008617425
+        },
+        {
+            "Name": "l52",
+            "Bus1": "52.1.2.3",
+            "Bus2": "53.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.2,
+            "Rpu": 0.0173333334,
+            "Xpu": 0.040833333400000005
+        },
+        {
+            "Name": "l53",
+            "Bus1": "53.1.2.3",
+            "Bus2": "54.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.125,
+            "Rpu": 0.010833333375,
+            "Xpu": 0.025520833375
+        },
+        {
+            "Name": "l54",
+            "Bus1": "54.1.2.3",
+            "Bus2": "55.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.275,
+            "Rpu": 0.023833333425000002,
+            "Xpu": 0.05614583342500001
+        },
+        {
+            "Name": "l55",
+            "Bus1": "54.1.2.3",
+            "Bus2": "57.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.35,
+            "Rpu": 0.030591856049999998,
+            "Xpu": 0.07060321975
+        },
+        {
+            "Name": "l56",
+            "Bus1": "55.1.2.3",
+            "Bus2": "56.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.275,
+            "Rpu": 0.023833333425000002,
+            "Xpu": 0.05614583342500001
+        },
+        {
+            "Name": "l57",
+            "Bus1": "57.2",
+            "Bus2": "58.2",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.25,
+            "Rpu": 0.062935606,
+            "Xpu": 0.06380208325
+        },
+        {
+            "Name": "l58",
+            "Bus1": "57.1.2.3",
+            "Bus2": "60.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.75,
+            "Rpu": 0.06555397725,
+            "Xpu": 0.15129261375
+        },
+        {
+            "Name": "l59",
+            "Bus1": "58.2",
+            "Bus2": "59.2",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.25,
+            "Rpu": 0.062935606,
+            "Xpu": 0.06380208325
+        },
+        {
+            "Name": "l60",
+            "Bus1": "60.1.2.3",
+            "Bus2": "61.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.55,
+            "Rpu": 0.048604166600000005,
+            "Xpu": 0.10918749985000001
+        },
+        {
+            "Name": "l61",
+            "Bus1": "60.1.2.3",
+            "Bus2": "62.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.25,
+            "Rpu": 0.0720123105,
+            "Xpu": 0.0356107955
+        },
+        {
+            "Name": "l62",
+            "Bus1": "62.1.2.3",
+            "Bus2": "63.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.175,
+            "Rpu": 0.05040861735,
+            "Xpu": 0.024927556849999997
+        },
+        {
+            "Name": "l63",
+            "Bus1": "63.1.2.3",
+            "Bus2": "64.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.35,
+            "Rpu": 0.1008172347,
+            "Xpu": 0.049855113699999995
+        },
+        {
+            "Name": "l64",
+            "Bus1": "64.1.2.3",
+            "Bus2": "65.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.425,
+            "Rpu": 0.12242092784999999,
+            "Xpu": 0.06053835235
+        },
+        {
+            "Name": "l65",
+            "Bus1": "65.1.2.3",
+            "Bus2": "66.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.325,
+            "Rpu": 0.09361600365,
+            "Xpu": 0.04629403415
+        },
+        {
+            "Name": "l66",
+            "Bus1": "67.1",
+            "Bus2": "68.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.2,
+            "Rpu": 0.05034848480000001,
+            "Xpu": 0.05104166660000001
+        },
+        {
+            "Name": "l67",
+            "Bus1": "67.1.2.3",
+            "Bus2": "72.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.275,
+            "Rpu": 0.024036458325000003,
+            "Xpu": 0.05547395837500001
+        },
+        {
+            "Name": "l68",
+            "Bus1": "67.1.2.3",
+            "Bus2": "97.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.25,
+            "Rpu": 0.02185132575,
+            "Xpu": 0.05043087125
+        },
+        {
+            "Name": "l69",
+            "Bus1": "68.1",
+            "Bus2": "69.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.275,
+            "Rpu": 0.06922916660000002,
+            "Xpu": 0.07018229157500001
+        },
+        {
+            "Name": "l70",
+            "Bus1": "69.1",
+            "Bus2": "70.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.325,
+            "Rpu": 0.08181628780000001,
+            "Xpu": 0.08294270822500001
+        },
+        {
+            "Name": "l71",
+            "Bus1": "70.1",
+            "Bus2": "71.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.275,
+            "Rpu": 0.06922916660000002,
+            "Xpu": 0.07018229157500001
+        },
+        {
+            "Name": "l72",
+            "Bus1": "72.3",
+            "Bus2": "73.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.275,
+            "Rpu": 0.06922916660000002,
+            "Xpu": 0.07018229157500001
+        },
+        {
+            "Name": "l73",
+            "Bus1": "72.1.2.3",
+            "Bus2": "76.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.2,
+            "Rpu": 0.0174810606,
+            "Xpu": 0.040344697000000006
+        },
+        {
+            "Name": "l74",
+            "Bus1": "73.3",
+            "Bus2": "74.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.35,
+            "Rpu": 0.0881098484,
+            "Xpu": 0.08932291654999999
+        },
+        {
+            "Name": "l75",
+            "Bus1": "74.3",
+            "Bus2": "75.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.4,
+            "Rpu": 0.10069696960000002,
+            "Xpu": 0.10208333320000001
+        },
+        {
+            "Name": "l76",
+            "Bus1": "76.1.2.3",
+            "Bus2": "77.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.4,
+            "Rpu": 0.0346666668,
+            "Xpu": 0.08166666680000001
+        },
+        {
+            "Name": "l77",
+            "Bus1": "76.1.2.3",
+            "Bus2": "86.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.7,
+            "Rpu": 0.061183712099999996,
+            "Xpu": 0.1412064395
+        },
+        {
+            "Name": "l78",
+            "Bus1": "77.1.2.3",
+            "Bus2": "78.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.1,
+            "Rpu": 0.0086666667,
+            "Xpu": 0.020416666700000002
+        },
+        {
+            "Name": "l79",
+            "Bus1": "78.1.2.3",
+            "Bus2": "79.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.225,
+            "Rpu": 0.019500000075000003,
+            "Xpu": 0.045937500075
+        },
+        {
+            "Name": "l80",
+            "Bus1": "78.1.2.3",
+            "Bus2": "80.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.475,
+            "Rpu": 0.041166666824999996,
+            "Xpu": 0.09697916682499999
+        },
+        {
+            "Name": "l81",
+            "Bus1": "80.1.2.3",
+            "Bus2": "81.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.175,
+            "Rpu": 0.015166666725,
+            "Xpu": 0.035729166725
+        },
+        {
+            "Name": "l82",
+            "Bus1": "81.1.2.3",
+            "Bus2": "82.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.25,
+            "Rpu": 0.02166666675,
+            "Xpu": 0.05104166675
+        },
+        {
+            "Name": "l83",
+            "Bus1": "81.3",
+            "Bus2": "84.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.675,
+            "Rpu": 0.16992613620000002,
+            "Xpu": 0.17226562477500001
+        },
+        {
+            "Name": "l84",
+            "Bus1": "82.1.2.3",
+            "Bus2": "83.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.25,
+            "Rpu": 0.02166666675,
+            "Xpu": 0.05104166675
+        },
+        {
+            "Name": "l85",
+            "Bus1": "84.3",
+            "Bus2": "85.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.475,
+            "Rpu": 0.1195776514,
+            "Xpu": 0.121223958175
+        },
+        {
+            "Name": "l86",
+            "Bus1": "86.1.2.3",
+            "Bus2": "87.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.45,
+            "Rpu": 0.039000000150000005,
+            "Xpu": 0.09187500015
+        },
+        {
+            "Name": "l87",
+            "Bus1": "87.1",
+            "Bus2": "88.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.175,
+            "Rpu": 0.0440549242,
+            "Xpu": 0.044661458274999996
+        },
+        {
+            "Name": "l88",
+            "Bus1": "87.1.2.3",
+            "Bus2": "89.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.275,
+            "Rpu": 0.023833333425000002,
+            "Xpu": 0.05614583342500001
+        },
+        {
+            "Name": "l89",
+            "Bus1": "89.2",
+            "Bus2": "90.2",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.25,
+            "Rpu": 0.062935606,
+            "Xpu": 0.06380208325
+        },
+        {
+            "Name": "l90",
+            "Bus1": "89.1.2.3",
+            "Bus2": "91.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.225,
+            "Rpu": 0.019500000075000003,
+            "Xpu": 0.045937500075
+        },
+        {
+            "Name": "l91",
+            "Bus1": "91.3",
+            "Bus2": "92.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.3,
+            "Rpu": 0.0755227272,
+            "Xpu": 0.0765624999
+        },
+        {
+            "Name": "l92",
+            "Bus1": "91.1.2.3",
+            "Bus2": "93.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.225,
+            "Rpu": 0.019500000075000003,
+            "Xpu": 0.045937500075
+        },
+        {
+            "Name": "l93",
+            "Bus1": "93.1",
+            "Bus2": "94.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.275,
+            "Rpu": 0.06922916660000002,
+            "Xpu": 0.07018229157500001
+        },
+        {
+            "Name": "l94",
+            "Bus1": "93.1.2.3",
+            "Bus2": "95.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.3,
+            "Rpu": 0.0260000001,
+            "Xpu": 0.06125000009999999
+        },
+        {
+            "Name": "l95",
+            "Bus1": "95.2",
+            "Bus2": "96.2",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.2,
+            "Rpu": 0.05034848480000001,
+            "Xpu": 0.05104166660000001
+        },
+        {
+            "Name": "l96",
+            "Bus1": "97.1.2.3",
+            "Bus2": "98.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.275,
+            "Rpu": 0.024036458325000003,
+            "Xpu": 0.05547395837500001
+        },
+        {
+            "Name": "l97",
+            "Bus1": "98.1.2.3",
+            "Bus2": "99.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.55,
+            "Rpu": 0.048072916650000005,
+            "Xpu": 0.11094791675000001
+        },
+        {
+            "Name": "l98",
+            "Bus1": "99.1.2.3",
+            "Bus2": "100.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.3,
+            "Rpu": 0.0262215909,
+            "Xpu": 0.0605170455
+        },
+        {
+            "Name": "l99",
+            "Bus1": "100.1.2.3",
+            "Bus2": "450.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.8,
+            "Rpu": 0.0699242424,
+            "Xpu": 0.16137878800000002
+        },
+        {
+            "Name": "l118",
+            "Bus1": "197.1.2.3",
+            "Bus2": "101.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.25,
+            "Rpu": 0.02185132575,
+            "Xpu": 0.05043087125
+        },
+        {
+            "Name": "l100",
+            "Bus1": "101.3",
+            "Bus2": "102.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.225,
+            "Rpu": 0.05664204540000001,
+            "Xpu": 0.057421874925000005
+        },
+        {
+            "Name": "l101",
+            "Bus1": "101.1.2.3",
+            "Bus2": "105.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.275,
+            "Rpu": 0.024036458325000003,
+            "Xpu": 0.05547395837500001
+        },
+        {
+            "Name": "l102",
+            "Bus1": "102.3",
+            "Bus2": "103.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.325,
+            "Rpu": 0.08181628780000001,
+            "Xpu": 0.08294270822500001
+        },
+        {
+            "Name": "l103",
+            "Bus1": "103.3",
+            "Bus2": "104.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.7,
+            "Rpu": 0.1762196968,
+            "Xpu": 0.17864583309999998
+        },
+        {
+            "Name": "l104",
+            "Bus1": "105.2",
+            "Bus2": "106.2",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.225,
+            "Rpu": 0.05664204540000001,
+            "Xpu": 0.057421874925000005
+        },
+        {
+            "Name": "l105",
+            "Bus1": "105.1.2.3",
+            "Bus2": "108.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.325,
+            "Rpu": 0.028406723475000003,
+            "Xpu": 0.065560132625
+        },
+        {
+            "Name": "l106",
+            "Bus1": "106.2",
+            "Bus2": "107.2",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.575,
+            "Rpu": 0.1447518938,
+            "Xpu": 0.146744791475
+        },
+        {
+            "Name": "l107",
+            "Bus1": "108.1",
+            "Bus2": "109.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.45,
+            "Rpu": 0.11328409080000001,
+            "Xpu": 0.11484374985000001
+        },
+        {
+            "Name": "l108",
+            "Bus1": "108.1.2.3",
+            "Bus2": "300.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 1.0,
+            "Rpu": 0.087405303,
+            "Xpu": 0.201723485
+        },
+        {
+            "Name": "l109",
+            "Bus1": "109.1",
+            "Bus2": "110.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.3,
+            "Rpu": 0.0755227272,
+            "Xpu": 0.0765624999
+        },
+        {
+            "Name": "l110",
+            "Bus1": "110.1",
+            "Bus2": "111.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.575,
+            "Rpu": 0.1447518938,
+            "Xpu": 0.146744791475
+        },
+        {
+            "Name": "l111",
+            "Bus1": "110.1",
+            "Bus2": "112.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.125,
+            "Rpu": 0.031467803,
+            "Xpu": 0.031901041625
+        },
+        {
+            "Name": "l112",
+            "Bus1": "112.1",
+            "Bus2": "113.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.525,
+            "Rpu": 0.1321647726,
+            "Xpu": 0.133984374825
+        },
+        {
+            "Name": "l113",
+            "Bus1": "113.1",
+            "Bus2": "114.1",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "1",
+            "Length": 0.325,
+            "Rpu": 0.08181628780000001,
+            "Xpu": 0.08294270822500001
+        },
+        {
+            "Name": "l114",
+            "Bus1": "135.1.2.3",
+            "Bus2": "35.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.375,
+            "Rpu": 0.032776988625,
+            "Xpu": 0.075646306875
+        },
+        {
+            "Name": "l116",
+            "Bus1": "152.1.2.3",
+            "Bus2": "52.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.4,
+            "Rpu": 0.0346666668,
+            "Xpu": 0.08166666680000001
+        },
+        {
+            "Name": "l117",
+            "Bus1": "160r.1.2.3",
+            "Bus2": "67.1.2.3",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.35,
+            "Rpu": 0.03033333345,
+            "Xpu": 0.07145833345
+        },
+        {
+            "Name": "sw1",
+            "Bus1": "150r",
+            "Bus2": "149",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.001,
+            "Rpu": 1e-06,
+            "Xpu": 0.0
+        },
+        {
+            "Name": "sw2",
+            "Bus1": "13",
+            "Bus2": "152",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.001,
+            "Rpu": 1e-06,
+            "Xpu": 0.0
+        },
+        {
+            "Name": "sw3",
+            "Bus1": "18",
+            "Bus2": "135",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.001,
+            "Rpu": 1e-06,
+            "Xpu": 0.0
+        },
+        {
+            "Name": "sw4",
+            "Bus1": "60",
+            "Bus2": "160",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.001,
+            "Rpu": 1e-06,
+            "Xpu": 0.0
+        },
+        {
+            "Name": "sw5",
+            "Bus1": "97",
+            "Bus2": "197",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.001,
+            "Rpu": 1e-06,
+            "Xpu": 0.0
+        },
+        {
+            "Name": "sw6",
+            "Bus1": "61",
+            "Bus2": "61s",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.001,
+            "Rpu": 1e-06,
+            "Xpu": 0.0
+        },
+        {
+            "Name": "sw7",
+            "Bus1": "151",
+            "Bus2": "300",
+            "Enabled": true,
+            "isSwitch": "False",
+            "numPhases": "3",
+            "Length": 0.001,
+            "Rpu": 1e-06,
+            "Xpu": 0.0
+        }
+    ],
+    "XFMRs": [
+        {
+            "Name": "sub",
+            "Bus1": "sourcebus",
+            "Bus2": "150",
+            "Enabled": true,
+            "numPhases": "3",
+            "Rpu": 0.5,
+            "Xpu": 8.0
+        },
+        {
+            "Name": "reg1a",
+            "Bus1": "150",
+            "Bus2": "150r",
+            "Enabled": true,
+            "numPhases": "3",
+            "Rpu": 5e-06,
+            "Xpu": 0.001
+        },
+        {
+            "Name": "xfm1",
+            "Bus1": "61s",
+            "Bus2": "610",
+            "Enabled": true,
+            "numPhases": "3",
+            "Rpu": 0.635,
+            "Xpu": 2.72
+        },
+        {
+            "Name": "reg2a",
+            "Bus1": "9.1",
+            "Bus2": "9r.1",
+            "Enabled": true,
+            "numPhases": "1",
+            "Rpu": 5e-06,
+            "Xpu": 0.01
+        },
+        {
+            "Name": "reg3a",
+            "Bus1": "25.1",
+            "Bus2": "25r.1",
+            "Enabled": true,
+            "numPhases": "1",
+            "Rpu": 5e-06,
+            "Xpu": 0.01
+        },
+        {
+            "Name": "reg4a",
+            "Bus1": "160.1",
+            "Bus2": "160r.1",
+            "Enabled": true,
+            "numPhases": "1",
+            "Rpu": 5e-06,
+            "Xpu": 0.01
+        },
+        {
+            "Name": "reg3c",
+            "Bus1": "25.3",
+            "Bus2": "25r.3",
+            "Enabled": true,
+            "numPhases": "1",
+            "Rpu": 5e-06,
+            "Xpu": 0.01
+        },
+        {
+            "Name": "reg4b",
+            "Bus1": "160.2",
+            "Bus2": "160r.2",
+            "Enabled": true,
+            "numPhases": "1",
+            "Rpu": 5e-06,
+            "Xpu": 0.01
+        },
+        {
+            "Name": "reg4c",
+            "Bus1": "160.3",
+            "Bus2": "160r.3",
+            "Enabled": true,
+            "numPhases": "1",
+            "Rpu": 5e-06,
+            "Xpu": 0.01
+        }
+    ],
+    "Buses": [
+        {
+            "Name": "sourcebus",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 0,
+            "Y": 1500
+        },
+        {
+            "Name": "150",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 100.0,
+            "Y": 1500.0
+        },
+        {
+            "Name": "150r",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 200.0,
+            "Y": 1500.0
+        },
+        {
+            "Name": "149",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 300.0,
+            "Y": 1500.0
+        },
+        {
+            "Name": "1",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 700.0,
+            "Y": 1500.0
+        },
+        {
+            "Name": "2",
+            "nodes": [
+                2
+            ],
+            "numPhases": 1,
+            "X": 700.0,
+            "Y": 1675.0
+        },
+        {
+            "Name": "3",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 700.0,
+            "Y": 1250.0
+        },
+        {
+            "Name": "7",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1000.0,
+            "Y": 1500.0
+        },
+        {
+            "Name": "4",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 700.0,
+            "Y": 1050.0
+        },
+        {
+            "Name": "5",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 1025.0,
+            "Y": 1250.0
+        },
+        {
+            "Name": "6",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 1275.0,
+            "Y": 1150.0
+        },
+        {
+            "Name": "8",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1200.0,
+            "Y": 1500.0
+        },
+        {
+            "Name": "12",
+            "nodes": [
+                2
+            ],
+            "numPhases": 1,
+            "X": 1200.0,
+            "Y": 1275.0
+        },
+        {
+            "Name": "9",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 1200.0,
+            "Y": 1725.0
+        },
+        {
+            "Name": "13",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1500.0,
+            "Y": 1500.0
+        },
+        {
+            "Name": "9r",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 1200.0,
+            "Y": 1725.0
+        },
+        {
+            "Name": "14",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 1200.0,
+            "Y": 2150.0
+        },
+        {
+            "Name": "34",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 1500.0,
+            "Y": 1350.0
+        },
+        {
+            "Name": "18",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1500.0,
+            "Y": 2325.0
+        },
+        {
+            "Name": "11",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 950.0,
+            "Y": 2150.0
+        },
+        {
+            "Name": "10",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 1450.0,
+            "Y": 2150.0
+        },
+        {
+            "Name": "15",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 1500.0,
+            "Y": 1250.0
+        },
+        {
+            "Name": "16",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 1500.0,
+            "Y": 875.0
+        },
+        {
+            "Name": "17",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 1850.0,
+            "Y": 1250.0
+        },
+        {
+            "Name": "19",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 1250.0,
+            "Y": 2325.0
+        },
+        {
+            "Name": "21",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1500.0,
+            "Y": 2625.0
+        },
+        {
+            "Name": "20",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 925.0,
+            "Y": 2325.0
+        },
+        {
+            "Name": "22",
+            "nodes": [
+                2
+            ],
+            "numPhases": 1,
+            "X": 975.0,
+            "Y": 2625.0
+        },
+        {
+            "Name": "23",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1500.0,
+            "Y": 2875.0
+        },
+        {
+            "Name": "24",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 950.0,
+            "Y": 2875.0
+        },
+        {
+            "Name": "25",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1500.0,
+            "Y": 3150.0
+        },
+        {
+            "Name": "25r",
+            "nodes": [
+                1,
+                3
+            ],
+            "numPhases": 2,
+            "X": 1500.0,
+            "Y": 3150.0
+        },
+        {
+            "Name": "26",
+            "nodes": [
+                1,
+                3
+            ],
+            "numPhases": 2,
+            "X": 1150.0,
+            "Y": 3150.0
+        },
+        {
+            "Name": "28",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1500.0,
+            "Y": 3350.0
+        },
+        {
+            "Name": "27",
+            "nodes": [
+                1,
+                3
+            ],
+            "numPhases": 2,
+            "X": 875.0,
+            "Y": 3150.0
+        },
+        {
+            "Name": "31",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 1150.0,
+            "Y": 3375.0
+        },
+        {
+            "Name": "33",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 875.0,
+            "Y": 3650.0
+        },
+        {
+            "Name": "29",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1500.0,
+            "Y": 3650.0
+        },
+        {
+            "Name": "30",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1850.0,
+            "Y": 3650.0
+        },
+        {
+            "Name": "250",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2050.0,
+            "Y": 3650.0
+        },
+        {
+            "Name": "32",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 1150.0,
+            "Y": 3675.0
+        },
+        {
+            "Name": "35",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1975.0,
+            "Y": 2325.0
+        },
+        {
+            "Name": "36",
+            "nodes": [
+                1,
+                2
+            ],
+            "numPhases": 2,
+            "X": 2075.0,
+            "Y": 2000.0
+        },
+        {
+            "Name": "40",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1975.0,
+            "Y": 2575.0
+        },
+        {
+            "Name": "37",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 1775.0,
+            "Y": 2000.0
+        },
+        {
+            "Name": "38",
+            "nodes": [
+                2
+            ],
+            "numPhases": 1,
+            "X": 2325.0,
+            "Y": 2000.0
+        },
+        {
+            "Name": "39",
+            "nodes": [
+                2
+            ],
+            "numPhases": 1,
+            "X": 2650.0,
+            "Y": 2000.0
+        },
+        {
+            "Name": "41",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 2300.0,
+            "Y": 2575.0
+        },
+        {
+            "Name": "42",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1975.0,
+            "Y": 2825.0
+        },
+        {
+            "Name": "43",
+            "nodes": [
+                2
+            ],
+            "numPhases": 1,
+            "X": 2475.0,
+            "Y": 2825.0
+        },
+        {
+            "Name": "44",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1975.0,
+            "Y": 3025.0
+        },
+        {
+            "Name": "45",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 2175.0,
+            "Y": 3025.0
+        },
+        {
+            "Name": "47",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1975.0,
+            "Y": 3275.0
+        },
+        {
+            "Name": "46",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 2475.0,
+            "Y": 3025.0
+        },
+        {
+            "Name": "48",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1825.0,
+            "Y": 3275.0
+        },
+        {
+            "Name": "49",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2225.0,
+            "Y": 3275.0
+        },
+        {
+            "Name": "50",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2475.0,
+            "Y": 3275.0
+        },
+        {
+            "Name": "51",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2725.0,
+            "Y": 3275.0
+        },
+        {
+            "Name": "151",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3187.0,
+            "Y": 3928.0
+        },
+        {
+            "Name": "52",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2000.0,
+            "Y": 1500.0
+        },
+        {
+            "Name": "53",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2200.0,
+            "Y": 1500.0
+        },
+        {
+            "Name": "54",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2325.0,
+            "Y": 1500.0
+        },
+        {
+            "Name": "55",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2600.0,
+            "Y": 1500.0
+        },
+        {
+            "Name": "57",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2325.0,
+            "Y": 1850.0
+        },
+        {
+            "Name": "56",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2875.0,
+            "Y": 1500.0
+        },
+        {
+            "Name": "58",
+            "nodes": [
+                2
+            ],
+            "numPhases": 1,
+            "X": 2075.0,
+            "Y": 1850.0
+        },
+        {
+            "Name": "60",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3075.0,
+            "Y": 1850.0
+        },
+        {
+            "Name": "59",
+            "nodes": [
+                2
+            ],
+            "numPhases": 1,
+            "X": 1825.0,
+            "Y": 1850.0
+        },
+        {
+            "Name": "61",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3075.0,
+            "Y": 1300.0
+        },
+        {
+            "Name": "62",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3075.0,
+            "Y": 2100.0
+        },
+        {
+            "Name": "63",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3075.0,
+            "Y": 2275.0
+        },
+        {
+            "Name": "64",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3075.0,
+            "Y": 2625.0
+        },
+        {
+            "Name": "65",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2650.0,
+            "Y": 2625.0
+        },
+        {
+            "Name": "66",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2650.0,
+            "Y": 2300.0
+        },
+        {
+            "Name": "67",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3525.0,
+            "Y": 1850.0
+        },
+        {
+            "Name": "68",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 3725.0,
+            "Y": 1850.0
+        },
+        {
+            "Name": "72",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3525.0,
+            "Y": 1575.0
+        },
+        {
+            "Name": "97",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3525.0,
+            "Y": 2100.0
+        },
+        {
+            "Name": "69",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 4000.0,
+            "Y": 1850.0
+        },
+        {
+            "Name": "70",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 4325.0,
+            "Y": 1850.0
+        },
+        {
+            "Name": "71",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 4600.0,
+            "Y": 1850.0
+        },
+        {
+            "Name": "73",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 3800.0,
+            "Y": 1575.0
+        },
+        {
+            "Name": "76",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3525.0,
+            "Y": 1375.0
+        },
+        {
+            "Name": "74",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 4150.0,
+            "Y": 1575.0
+        },
+        {
+            "Name": "75",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 4550.0,
+            "Y": 1575.0
+        },
+        {
+            "Name": "77",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3925.0,
+            "Y": 1375.0
+        },
+        {
+            "Name": "86",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3255.0,
+            "Y": 725.0
+        },
+        {
+            "Name": "78",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 4025.0,
+            "Y": 1375.0
+        },
+        {
+            "Name": "79",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 4250.0,
+            "Y": 1375.0
+        },
+        {
+            "Name": "80",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 4025.0,
+            "Y": 900.0
+        },
+        {
+            "Name": "81",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 4025.0,
+            "Y": 425.0
+        },
+        {
+            "Name": "82",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 4025.0,
+            "Y": 175.0
+        },
+        {
+            "Name": "84",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 4700.0,
+            "Y": 425.0
+        },
+        {
+            "Name": "83",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 4275.0,
+            "Y": 175.0
+        },
+        {
+            "Name": "85",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 4700.0,
+            "Y": 900.0
+        },
+        {
+            "Name": "87",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3050.0,
+            "Y": 1125.0
+        },
+        {
+            "Name": "88",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 2950.0,
+            "Y": 1300.0
+        },
+        {
+            "Name": "89",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2775.0,
+            "Y": 1125.0
+        },
+        {
+            "Name": "90",
+            "nodes": [
+                2
+            ],
+            "numPhases": 1,
+            "X": 2775.0,
+            "Y": 900.0
+        },
+        {
+            "Name": "91",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2550.0,
+            "Y": 1125.0
+        },
+        {
+            "Name": "92",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 2550.0,
+            "Y": 825.0
+        },
+        {
+            "Name": "93",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2325.0,
+            "Y": 1125.0
+        },
+        {
+            "Name": "94",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 2325.0,
+            "Y": 850.0
+        },
+        {
+            "Name": "95",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 2025.0,
+            "Y": 1125.0
+        },
+        {
+            "Name": "96",
+            "nodes": [
+                2
+            ],
+            "numPhases": 1,
+            "X": 2025.0,
+            "Y": 925.0
+        },
+        {
+            "Name": "98",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3800.0,
+            "Y": 2100.0
+        },
+        {
+            "Name": "99",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 4350.0,
+            "Y": 2100.0
+        },
+        {
+            "Name": "100",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 4650.0,
+            "Y": 2100.0
+        },
+        {
+            "Name": "450",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 5450.0,
+            "Y": 2100.0
+        },
+        {
+            "Name": "197",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3525.0,
+            "Y": 2200.0
+        },
+        {
+            "Name": "101",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3525.0,
+            "Y": 2450.0
+        },
+        {
+            "Name": "102",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 3750.0,
+            "Y": 2450.0
+        },
+        {
+            "Name": "105",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3525.0,
+            "Y": 2725.0
+        },
+        {
+            "Name": "103",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 4075.0,
+            "Y": 2450.0
+        },
+        {
+            "Name": "104",
+            "nodes": [
+                3
+            ],
+            "numPhases": 1,
+            "X": 4775.0,
+            "Y": 2450.0
+        },
+        {
+            "Name": "106",
+            "nodes": [
+                2
+            ],
+            "numPhases": 1,
+            "X": 3750.0,
+            "Y": 2725.0
+        },
+        {
+            "Name": "108",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3525.0,
+            "Y": 3050.0
+        },
+        {
+            "Name": "107",
+            "nodes": [
+                2
+            ],
+            "numPhases": 1,
+            "X": 4325.0,
+            "Y": 2725.0
+        },
+        {
+            "Name": "109",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 3975.0,
+            "Y": 3050.0
+        },
+        {
+            "Name": "300",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3245.0,
+            "Y": 4010.0
+        },
+        {
+            "Name": "110",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 4275.0,
+            "Y": 3050.0
+        },
+        {
+            "Name": "111",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 4275.0,
+            "Y": 3625.0
+        },
+        {
+            "Name": "112",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 4275.0,
+            "Y": 2925.0
+        },
+        {
+            "Name": "113",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 4800.0,
+            "Y": 2925.0
+        },
+        {
+            "Name": "114",
+            "nodes": [
+                1
+            ],
+            "numPhases": 1,
+            "X": 5125.0,
+            "Y": 2925.0
+        },
+        {
+            "Name": "135",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1600.0,
+            "Y": 2325.0
+        },
+        {
+            "Name": "152",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 1600.0,
+            "Y": 1500.0
+        },
+        {
+            "Name": "160r",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3175.0,
+            "Y": 1850.0
+        },
+        {
+            "Name": "160",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3175.0,
+            "Y": 1850.0
+        },
+        {
+            "Name": "61s",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3175.0,
+            "Y": 1300.0
+        },
+        {
+            "Name": "610",
+            "nodes": [
+                1,
+                2,
+                3
+            ],
+            "numPhases": 3,
+            "X": 3275.0,
+            "Y": 1300.0
+        }
+    ],
+    "Pvs": [
+        {
+            "Name": "1",
+            "Bus": "8.1.2.3",
+            "Enabled": true,
+            "numPhases": "3"
+        },
+        {
+            "Name": "2",
+            "Bus": "18.1.2.3",
+            "Enabled": true,
+            "numPhases": "3"
+        },
+        {
+            "Name": "3",
+            "Bus": "28.1.2.3",
+            "Enabled": true,
+            "numPhases": "3"
+        },
+        {
+            "Name": "4",
+            "Bus": "48.1.2.3",
+            "Enabled": true,
+            "numPhases": "3"
+        },
+        {
+            "Name": "5",
+            "Bus": "61.1.2.3",
+            "Enabled": true,
+            "numPhases": "3"
+        },
+        {
+            "Name": "6",
+            "Bus": "79.1.2.3",
+            "Enabled": true,
+            "numPhases": "3"
+        },
+        {
+            "Name": "7",
+            "Bus": "95.1.2.3",
+            "Enabled": true,
+            "numPhases": "3"
+        },
+        {
+            "Name": "8",
+            "Bus": "100.1.2.3",
+            "Enabled": true,
+            "numPhases": "3"
+        },
+        {
+            "Name": "9",
+            "Bus": "108.1.2.3",
+            "Enabled": true,
+            "numPhases": "3"
+        }
+    ],
+    "BESS": {},
+    "Gens": {}
+}
