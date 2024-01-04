@@ -612,7 +612,7 @@ def checkSensivity(Main_dir,IEEE123_SysInfo,old_info,settings,Force_NOIBR,Device
     fundir = Main_dir
     write_Con(CtrlDev,ProDevRef,Pairs,M2,fundir,Objfile,CTI)
     
-    spec1 = importlib.util.spec_from_file_location(Objfile+'_con', Main_dir+'\\'+Objfile+'_con.py')
+    spec1 = importlib.util.spec_from_file_location(Objfile+'_con', os.path.join(Main_dir,f'{Objfile}_con.py'))
     module1 = importlib.util.module_from_spec(spec1)
     sys.modules[Objfile+'_con'] = module1
     spec1.loader.exec_module(module1)

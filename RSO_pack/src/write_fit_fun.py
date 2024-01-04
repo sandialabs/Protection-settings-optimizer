@@ -4,10 +4,11 @@ Created on Thu Aug  4 15:38:52 2022
 
 @author: maste
 """
+import os
 
 def write_GA_fit_fun(CtrlDev,ProDevRef,Pairs,M2,fundir,fileName,CTI,OTmax):
     
-    fileID = open(fundir+'\\'+fileName+'.py','w+')
+    fileID = open(os.path.join(fundir,f'{fileName}.py'),'w+')
     
     fileID.write('\n') 
     fileID.write('from RSO_pack import OCOT\n') 
@@ -184,7 +185,7 @@ def write_GA_fit_fun(CtrlDev,ProDevRef,Pairs,M2,fundir,fileName,CTI,OTmax):
 # %% CTI and Constraint Calculation
 def write_Con(CtrlDev,ProDevRef,Pairs,M2,fundir,fileName,CTI):
     
-    fileID = open(fundir+'\\'+fileName+'_con.py','w+')
+    fileID = open(os.path.join(fundir,f'{fileName}_con.py'),'w+')
     
     fileID.write('\n') 
     fileID.write('from RSO_pack import OCOT\n') 

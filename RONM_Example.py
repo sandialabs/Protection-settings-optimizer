@@ -10,7 +10,6 @@ import json
 import RSO_pack
 import numpy as np
 import pandas as pd
-import win32com.client
 import matplotlib.pyplot as plt
 
 from RSO_pack.src.Read_CSV_Functions import pdef
@@ -20,7 +19,7 @@ from RSO_pack.src.Read_CSV_Functions import abc2012
 pwd = os.getcwd()
 Main_dir = pwd
 # import data for RONM JSON file
-jsonFile = pwd+'\\Examples\\RONM_Data\\output.ieee13.faults.json' 
+jsonFile = os.path.join(pwd,'Examples','RONM_Data','output.ieee13.faults.json') 
 Main_dir = pwd
 f = open(jsonFile) 
 jsonDict = json.load(f)
