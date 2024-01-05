@@ -6,32 +6,29 @@ Created on Mon Jan  9 22:10:50 2023
 """
 # Example OpenDSS Input 
 import os
-#import json
 import RSO_pack
-#import numpy as np
-#import pandas as pd
-import win32com.client
-#import matplotlib.pyplot as plt
-
-#from RSO_pack.src.Read_CSV_Functions import pdef
-#from RSO_pack.src.Read_CSV_Functions import abc2012
-
+#import win32com.client
+import opendssdirect as dss
 
 pwd = os.getcwd()
 
 # Start OpenDSS
+'''
 dssObj = win32com.client.Dispatch("OpenDSSEngine.DSS")
 dssText = dssObj.Text
 dssCircuit = dssObj.ActiveCircuit
-dssSolution = dssCircuit.Solution
-dssElem = dssCircuit.ActiveCktElement
-dssBus = dssCircuit.ActiveBus
-
+#dssSolution = dssCircuit.Solution 
+#dssElem = dssCircuit.ActiveCktElement 
+#dssBus = dssCircuit.ActiveBus
+'''
 # Start Run IEEE 34 bus system
-dssText.Command = 'clear'
-dssText.Command = 'compile '+ os.path.join(pwd,'Examples','IEEE34_OpenDSS','IEEE34Test.dss')
-dssText.command = 'set maxcontroliter = 500'
-dssText.Command = 'solve'
+dss.run_command('clear')
+dss.run_command('compile '+ os.path.join(pwd,'Examples','IEEE34_OpenDSS','IEEE34Test.dss'))
+dss.run_command('set maxcontroliter = 500')
+dss.run_command('solve')
+
+dssText = dss.Text
+dssCircuit = dss.Circuit
 
 # collect system info from OpenDSS
 SysInfo = RSO_pack.getSysInfo(dssCircuit)
