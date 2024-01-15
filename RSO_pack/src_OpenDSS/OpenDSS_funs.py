@@ -5,6 +5,7 @@ Functions to interface wiht opendss
 
 import numpy as np
 import pandas as pd
+import opendssdirect as dss
 
 def pdef(mag,ang):
     A = mag*np.exp(1j*ang*(np.pi/180))
@@ -114,6 +115,8 @@ def getFaultInfo(dssCircuit,dssText,faultBuses,faultBusPhases,Fres,Fts,devLines,
         Datafram contining the fault current observed by devices for each fault.
 
     """
+    dss.Circuit = dssCircuit
+
     dssText.command = 'set maxcontroliter = 500'
     dssText.Command = 'solve'
 
@@ -128,7 +131,7 @@ def getFaultInfo(dssCircuit,dssText,faultBuses,faultBusPhases,Fres,Fts,devLines,
                 if(type(NewData)!=int):
                     FData = pd.concat([FData,NewData],)
                 else:
-                    print('Cannot Get '+Ft+' fatult data for bus '+faultBuses[ii])
+                    print('Cannot Get '+Ft+' fault data for bus '+faultBuses[ii])
     return FData
 
 # %% greate systeminfo json file
@@ -147,6 +150,7 @@ def getSysInfo(dssCircuit):
         dict contaning system information (Relays,Reclosers,Fuses,Lines,Transformers,Buses, Pvs .
 
     """
+    dss.Circuit = dssCircuit
     # collect network data
     Relays = getRelayInfo(dssCircuit)
     Recs = getRecloserInfo(dssCircuit)
@@ -179,20 +183,20 @@ def getBESSInfo(dssCircuit):
         List of Battery energy systems.
 
     """
-    dssCircuit.setActiveClass('Storage')    # set class in opendss
-    BESS_names = dssCircuit.ActiveClass.AllNames # gent list of bat systems
-    nBESS = len(BESS_names) 
+    dssCircuit.SetActiveClass('Storage')    # set class in opendss
+    BESS_names = dss.ActiveClass.AllNames() # gent list of bat systems
+    nBESS = len(BESS_names)
     if nBESS == 0:      # if no Battery systems return empty dict
         BESSs = {}; 
         return BESSs
     else:               # get Battery system Name, Location, status and number of phases 
         BESSs = [dict.fromkeys(['Name','Bus','Enabled','numPhases']) for number in range(nBESS)]
         for ii in range(nBESS):
-            dssCircuit.setActiveElement('Storage.'+BESS_names[ii])
-            BESSs[ii]['Name'] = dssCircuit.ActiveCktElement.Name.split('.')[1]
-            BESSs[ii]['Bus'] = dssCircuit.ActiveCktElement.BusNames[0]
-            BESSs[ii]['Enabled'] = dssCircuit.ActiveCktElement.Enabled
-            BESSs[ii]['numPhases'] = dssCircuit.ActiveCktElement.Properties('phases').val
+            dssCircuit.SetActiveElement('Storage.'+BESS_names[ii])
+            BESSs[ii]['Name'] = dss.CktElement.Name().split('.')[1]
+            BESSs[ii]['Bus'] = dss.CktElement.BusNames()[0]
+            BESSs[ii]['Enabled'] = dss.CktElement.Enabled()
+            BESSs[ii]['numPhases'] = dss.Properties.Value('phases')
         return(BESSs)
 
 # %% get Generator info 
@@ -211,19 +215,19 @@ def getGeneratorInfo(dssCircuit):
         List of generators in the systems.
 
     """
-    Gen_names = dssCircuit.Generators.AllNames # get list of generators in the system
-    if dssCircuit.Generators.AllNames[0] == 'NONE': # if no generators in systems return empty dict
+    Gen_names = dss.Generators.AllNames() # get list of generators in the system
+    if len(Gen_names) == 0 or Gen_names[0] == 'NONE': # if no generators in systems return empty dict
         Gens = {}
         return(Gens)
     else:
         # get generator Name, Location, status and number of phases 
         Gens = [dict.fromkeys(['Name','Bus','Enabled','numPhases']) for number in range(len(Gen_names))]
         for ii in range(len(Gen_names)):
-            dssCircuit.setActiveElement('generator.'+Gen_names[ii])
-            Gens[ii]['Name'] = dssCircuit.ActiveCktElement.Name.split('.')[1]
-            Gens[ii]['Bus'] = dssCircuit.ActiveCktElement.BusNames[0]
-            Gens[ii]['Enabled'] = dssCircuit.ActiveCktElement.Enabled
-            Gens[ii]['numPhases'] = dssCircuit.ActiveCktElement.Properties('phases').val
+            dssCircuit.SetActiveElement('generator.'+Gen_names[ii])
+            Gens[ii]['Name'] = dss.CktElement.Name.split()('.')[1]
+            Gens[ii]['Bus'] = dss.CktElement.BusNames()[0]
+            Gens[ii]['Enabled'] = dss.CktElement.Enabled()
+            Gens[ii]['numPhases'] = dss.Properties.Value('phases')
         return(Gens)
 
 # %% get PV info 
@@ -242,8 +246,8 @@ def getPvInfo(dssCircuit):
         List of PVs in the systems.
 
     """
-    dssCircuit.setActiveClass('PVSystem')
-    Pv_names = dssCircuit.PVSystems.AllNames    # get list of PVs in the system names
+    dssCircuit.SetActiveClass('PVSystem')
+    Pv_names = dss.PVsystems.AllNames()    # get list of PVs in the system names
     nPV = len(Pv_names)
     if nPV == 0:    # if no PVs in systems return empty dict
         PVs = {}
@@ -251,11 +255,11 @@ def getPvInfo(dssCircuit):
     else:          # get PV systme Name, Location, status and number of phases
         PVs = [dict.fromkeys(['Name','Bus','Enabled','numPhases']) for number in range(len(Pv_names))]
         for ii in range(len(Pv_names)):
-            dssCircuit.setActiveElement('PVSystem.'+Pv_names[ii])
-            PVs[ii]['Name'] = dssCircuit.ActiveCktElement.Name.split('.')[1]
-            PVs[ii]['Bus'] = dssCircuit.ActiveCktElement.BusNames[0]
-            PVs[ii]['Enabled'] = dssCircuit.ActiveCktElement.Enabled
-            PVs[ii]['numPhases'] = dssCircuit.ActiveCktElement.Properties('phases').val
+            dssCircuit.SetActiveElement('PVSystem.'+Pv_names[ii])
+            PVs[ii]['Name'] = dss.CktElement.Name().split('.')[1]
+            PVs[ii]['Bus'] = dss.CktElement.BusNames()[0]
+            PVs[ii]['Enabled'] = dss.CktElement.Enabled()
+            PVs[ii]['numPhases'] = dss.Properties.Value('phases')
             return(PVs)
 
 # %% get Bus info 
@@ -274,17 +278,17 @@ def getBusInfo(dssCircuit):
         List of Buses in the systems.
 
     """
-    Bus_names = dssCircuit.AllBusNames # get all bus names
+    Bus_names = dssCircuit.AllBusNames() # get all bus names
     Buses = [dict.fromkeys(['Name','nodes','numPhases','X','Y']) for number in range(len(Bus_names))]
     for ii in range(len(Bus_names)):    # get Name, Nodes, numbr of phases and coordinates if avaliable for each bus
-        dssCircuit.setActiveBus(Bus_names[ii])
-        Buses[ii]['Name'] = dssCircuit.ActiveBus.Name.split('.')[0]
-        Buses[ii]['nodes'] = dssCircuit.ActiveBus.Nodes
-        Buses[ii]['numPhases'] = dssCircuit.ActiveBus.NumNodes
-        Buses[ii]['kV'] = dssCircuit.ActiveBus.kVBase
-        if(dssCircuit.ActiveBus.Coorddefined):
-            Buses[ii]['X'] = dssCircuit.ActiveBus.X
-            Buses[ii]['Y'] = dssCircuit.ActiveBus.Y
+        dssCircuit.SetActiveBus(Bus_names[ii])
+        Buses[ii]['Name'] = dss.Bus.Name().split('.')[0]
+        Buses[ii]['nodes'] = dss.Bus.Nodes()
+        Buses[ii]['numPhases'] = dss.Bus.NumNodes()
+        Buses[ii]['kV'] = dss.Bus.kVBase()
+        if(dss.Bus.Coorddefined()):
+            Buses[ii]['X'] = dss.Bus.X()
+            Buses[ii]['Y'] = dss.Bus.Y()
         else:
             Buses[ii]['X'] = np.nan
             Buses[ii]['Y'] = np.nan
@@ -306,18 +310,18 @@ def getTransformerInfo(dssCircuit):
         List of Transformers in the systems.
 
     """
-    XFMR_names = dssCircuit.Transformers.AllNames # get all transformer names from opendss
+    XFMR_names = dss.Transformers.AllNames() # get all transformer names from opendss
     XFMRs = [dict.fromkeys(['Name','Bus1','Bus2','Enabled','numPhases']) for number in range(len(XFMR_names))]
     
     for ii in range(len(XFMR_names)):   # get Name, Bus connections, status, number of phases and impedance 
-        dssCircuit.setActiveElement('transformer.'+XFMR_names[ii])
-        XFMRs[ii]['Name'] = dssCircuit.ActiveCktElement.Name.split('.')[1]
-        XFMRs[ii]['Bus1'] = dssCircuit.ActiveCktElement.BusNames[0]
-        XFMRs[ii]['Bus2'] = dssCircuit.ActiveCktElement.BusNames[1]
-        XFMRs[ii]['Enabled'] = dssCircuit.ActiveCktElement.Enabled
-        XFMRs[ii]['numPhases'] = dssCircuit.ActiveCktElement.Properties('phases').val
-        XFMRs[ii]['Rpu'] = float(dssCircuit.ActiveCktElement.Properties('%R').val)
-        XFMRs[ii]['Xpu'] = float(dssCircuit.ActiveCktElement.Properties('X12').val)
+        dssCircuit.SetActiveElement('transformer.'+XFMR_names[ii])
+        XFMRs[ii]['Name'] = dss.CktElement.Name().split('.')[1]
+        XFMRs[ii]['Bus1'] = dss.CktElement.BusNames()[0]
+        XFMRs[ii]['Bus2'] = dss.CktElement.BusNames()[1]
+        XFMRs[ii]['Enabled'] = dss.CktElement.Enabled()
+        XFMRs[ii]['numPhases'] = dss.Properties.Value('phases')
+        XFMRs[ii]['Rpu'] = float(dss.Properties.Value('%R'))
+        XFMRs[ii]['Xpu'] = float(dss.Properties.Value('X12'))
     return(XFMRs)
 
 # %% get Line info
@@ -336,20 +340,20 @@ def getLineInfo(dssCircuit):
         List of Lines in the systems.
 
     """
-    Line_names = dssCircuit.Lines.AllNames # get all line Names
+    Line_names = dss.Lines.AllNames() # get all line Names
     Lines = [dict.fromkeys(['Name','Bus1','Bus2','Enabled','isSwitch','numPhases']) for number in range(len(Line_names))]
     
     for ii in range(len(Line_names)):   # get Line names, connections, status , can be switched, number of phases, Length, impedance
-        dssCircuit.setActiveElement('line.'+Line_names[ii])
-        Lines[ii]['Name'] = dssCircuit.ActiveCktElement.Name.split('.')[1]
-        Lines[ii]['Bus1'] = dssCircuit.ActiveCktElement.BusNames[0]
-        Lines[ii]['Bus2'] = dssCircuit.ActiveCktElement.BusNames[1]
-        Lines[ii]['Enabled'] = dssCircuit.ActiveCktElement.Enabled
-        Lines[ii]['isSwitch'] = dssCircuit.ActiveCktElement.Properties('Switch').val
-        Lines[ii]['numPhases'] = dssCircuit.ActiveCktElement.Properties('phases').val
-        Lines[ii]['Length'] = float(dssCircuit.ActiveCktElement.Properties('length').val)
-        Lines[ii]['Rpu'] = dssCircuit.Lines.Rmatrix[0] * Lines[ii]['Length']
-        Lines[ii]['Xpu'] = dssCircuit.Lines.Xmatrix[0] * Lines[ii]['Length']
+        dssCircuit.SetActiveElement('line.'+Line_names[ii])
+        Lines[ii]['Name'] = dss.CktElement.Name().split('.')[1]
+        Lines[ii]['Bus1'] = dss.CktElement.BusNames()[0]
+        Lines[ii]['Bus2'] = dss.CktElement.BusNames()[1]
+        Lines[ii]['Enabled'] = dss.CktElement.Enabled()
+        Lines[ii]['isSwitch'] = dss.Properties.Value('Switch')
+        Lines[ii]['numPhases'] = dss.Properties.Value('phases')
+        Lines[ii]['Length'] = float(dss.Properties.Value('length'))
+        Lines[ii]['Rpu'] = dss.Lines.RMatrix()[0] * Lines[ii]['Length']
+        Lines[ii]['Xpu'] = dss.Lines.XMatrix()[0] * Lines[ii]['Length']
     return(Lines)
 
 # %% Get Fuse info 
@@ -368,23 +372,23 @@ def getFuseInfo(dssCircuit):
         List of fuses in the system 
 
     """
-    Fuse_names = dssCircuit.Fuses.AllNames # get all fuse names from OpenDSS
-    if(Fuse_names[0] == 'NONE'): # return empty dict if no fuses in the system 
+    Fuse_names = dss.Fuses.AllNames() # get all fuse names from OpenDSS
+    if(len(Fuse_names) == 0 or Fuse_names[0] == 'NONE'): # return empty dict if no fuses in the system 
         Fuses = {}
         return Fuses
     else: # get fuse Name, status, Type, Rating, location
         Fuses = [dict.fromkeys(['Name','Bus1','Bus2','MonitoredObj','Enabled','Type','Rating']) for number in range(len(Fuse_names))]
         for ii in range(len(Fuse_names)):
-            dssCircuit.setActiveElement('Fuse.'+Fuse_names[ii])
-            Fuses[ii]['Name'] = dssCircuit.ActiveCktElement.Name.split('.')[1]
-            Fuses[ii]['Enabled'] = dssCircuit.ActiveCktElement.Enabled
-            Fuses[ii]['Type'] = dssCircuit.ActiveCktElement.Properties('FuseCurve').val
-            Fuses[ii]['Rating'] = dssCircuit.ActiveCktElement.Properties('RatedCurrent').val
-            Fuses[ii]['MonitoredObj'] = dssCircuit.ActiveCktElement.Properties('MonitoredObj').val;
+            dssCircuit.SetActiveElement('Fuse.'+Fuse_names[ii])
+            Fuses[ii]['Name'] = dss.CktElement.Name().split('.')[1]
+            Fuses[ii]['Enabled'] = dss.CktElement.Enabled()
+            Fuses[ii]['Type'] = dss.Properties.Value('FuseCurve')
+            Fuses[ii]['Rating'] = dss.Properties.Value('RatedCurrent')
+            Fuses[ii]['MonitoredObj'] = dss.Properties.Value('MonitoredObj')
             #change Active Circuit to Fuse and get bus info
-            dssCircuit.setActiveElement(Fuses[ii]['MonitoredObj']) 
-            Fuses[ii]['Bus1'] = dssCircuit.ActiveCktElement.BusNames[0].split('.')[0]
-            Fuses[ii]['Bus2'] = dssCircuit.ActiveCktElement.BusNames[1].split('.')[0]
+            dssCircuit.SetActiveElement(Fuses[ii]['MonitoredObj']) 
+            Fuses[ii]['Bus1'] = dss.CktElement.BusNames()[0].split('.')[0]
+            Fuses[ii]['Bus2'] = dss.CktElement.BusNames()[1].split('.')[0]
             
         return Fuses
     
@@ -404,22 +408,22 @@ def getRecloserInfo(dssCircuit):
         List of reclosers in the system 
 
     """
-    Rec_names = dssCircuit.Reclosers.AllNames # get all recloser names
-    if(Rec_names[0] == 'NONE'): # if no reclosers in system retutn empty dict
+    Rec_names = dss.Reclosers.AllNames() # get all recloser names
+    if(len(Rec_names) == 0 or Rec_names[0] == 'NONE'): # if no reclosers in system retutn empty dict
         Rec = {}
         return Rec
     else:
         # get recloser name, location, status from opendss
         Rec = [dict.fromkeys(['Name','Bus1','Bus2','MonitoredObj','Enabled']) for number in range(len(Rec_names))]
         for ii in range(len(Rec_names)):
-            dssCircuit.setActiveElement('Recloser.'+Rec_names[ii])
-            Rec[ii]['Name'] = dssCircuit.ActiveCktElement.Name.split('.')[1]
-            Rec[ii]['Enabled'] = dssCircuit.ActiveCktElement.Enabled
-            Rec[ii]['MonitoredObj'] = dssCircuit.ActiveCktElement.Properties('MonitoredObj').val;
+            dssCircuit.SetActiveElement('Recloser.'+Rec_names[ii])
+            Rec[ii]['Name'] = dss.CktElement.Name().split('.')[1]
+            Rec[ii]['Enabled'] = dss.CktElement.Enabled()
+            Rec[ii]['MonitoredObj'] = dss.Properties.Value('MonitoredObj')
             # change Active Circuit to Reclosers 
-            dssCircuit.setActiveElement(Rec[ii]['MonitoredObj'])
-            Rec[ii]['Bus1'] = dssCircuit.ActiveCktElement.BusNames[0].split('.')[0]
-            Rec[ii]['Bus2'] = dssCircuit.ActiveCktElement.BusNames[1].split('.')[0]
+            dssCircuit.SetActiveElement(Rec[ii]['MonitoredObj'])
+            Rec[ii]['Bus1'] = dss.CktElement.BusNames()[0].split('.')[0]
+            Rec[ii]['Bus2'] = dss.CktElement.BusNames()[1].split('.')[0]
         return Rec # return list of reclosers
 
 # %% Get Relay info
@@ -438,7 +442,7 @@ def getRelayInfo(dssCircuit):
         List of relays in the system.
 
     """
-    Relay_names = dssCircuit.Relays.AllNames
+    Relay_names = dss.Relays.AllNames()
     if(Relay_names[0] == 'NONE'): # if no relays in the system return empty dict
         Relays = {}
         return Relays
@@ -446,15 +450,15 @@ def getRelayInfo(dssCircuit):
         # get relay name, location, status for each relay in the system 
         Relays = [dict.fromkeys(['Name','Bus1','Bus2','MonitoredObj','Enabled']) for number in range(len(Relay_names))]
         for ii in range(len(Relay_names)):
-            dssCircuit.setActiveElement('relay.'+Relay_names[ii])
-            Relays[ii]['Name'] = dssCircuit.ActiveCktElement.Name.split('.')[1]
-            Relays[ii]['Enabled'] = dssCircuit.ActiveCktElement.Enabled
-            Relays[ii]['MonitoredObj'] = dssCircuit.ActiveCktElement.Properties('MonitoredObj').val;
+            dssCircuit.SetActiveElement('relay.'+Relay_names[ii])
+            Relays[ii]['Name'] = dss.CktElement.Name().split('.')[1]
+            Relays[ii]['Enabled'] = dss.CktElement.Enabled()
+            Relays[ii]['MonitoredObj'] = dss.Properties.Value('MonitoredObj')
             # change Active Circuit to Relay 
-            dssCircuit.setActiveElement(Relays[ii]['MonitoredObj'])
-            Relays[ii]['Bus1'] = dssCircuit.ActiveCktElement.BusNames[0].split('.')[0]
-            Relays[ii]['Bus2'] = dssCircuit.ActiveCktElement.BusNames[1].split('.')[0]
-    return(Relays) # return list of realys
+            dssCircuit.SetActiveElement(Relays[ii]['MonitoredObj'])
+            Relays[ii]['Bus1'] = dss.CktElement.BusNames()[0].split('.')[0]
+            Relays[ii]['Bus2'] = dss.CktElement.BusNames()[1].split('.')[0]
+    return(Relays) # return list of relays
 
 # %% Get Load info 
 def getLoadInfo(dssCircuit):
@@ -481,18 +485,18 @@ def getLoadInfo(dssCircuit):
         Loads = [dict.fromkeys(['Name','Bus','Nodes','Enabled','phases','kV','pf','kW','kvar','kVA','model','conn']) for number in range(len(Load_names))]
         for ii in range(len(Load_names)):
             dssCircuit.setActiveElement('load.'+Load_names[ii])
-            Loads[ii]['Name'] = dssCircuit.ActiveCktElement.Name.split('.')[1]
-            Loads[ii]['Enabled'] = dssCircuit.ActiveCktElement.Enabled
-            Loads[ii]['Bus'] = dssCircuit.ActiveCktElement.BusNames[0].split('.')[0]
-            Loads[ii]['Nodes'] = dssCircuit.ActiveCktElement.NodeOrder
-            Loads[ii]['phases'] = dssCircuit.ActiveCktElement.Properties('phases').val
-            Loads[ii]['kV'] = dssCircuit.ActiveCktElement.Properties('kV').val
-            Loads[ii]['pf'] = dssCircuit.ActiveCktElement.Properties('pf').val
-            Loads[ii]['kW'] = dssCircuit.ActiveCktElement.Properties('kW').val
-            Loads[ii]['kvar'] = dssCircuit.ActiveCktElement.Properties('kvar').val
-            Loads[ii]['kVA'] = dssCircuit.ActiveCktElement.Properties('kVA').val
-            Loads[ii]['model'] = dssCircuit.ActiveCktElement.Properties('model').val
-            Loads[ii]['conn'] = dssCircuit.ActiveCktElement.Properties('model').val
+            Loads[ii]['Name'] = dss.CktElement.Name().split('.')[1]
+            Loads[ii]['Enabled'] = dss.CktElement.Enabled()
+            Loads[ii]['Bus'] = dss.CktElement.BusNames()[0].split('.')[0]
+            Loads[ii]['Nodes'] = dss.CktElement.NodeOrder()
+            Loads[ii]['phases'] = dss.CktElement.Properties.Value('phases')
+            Loads[ii]['kV'] = dss.CktElement.Properties.Value('kV')
+            Loads[ii]['pf'] = dss.CktElement.Properties.Value('pf')
+            Loads[ii]['kW'] = dss.CktElement.Properties.Value('kW')
+            Loads[ii]['kvar'] = dss.CktElement.Properties.Value('kvar')
+            Loads[ii]['kVA'] = dss.CktElement.Properties.Value('kVA')
+            Loads[ii]['model'] = dss.CktElement.Properties.Value('model')
+            Loads[ii]['conn'] = dss.CktElement.Properties.Value('model')
             
         return  Loads
 
@@ -525,13 +529,13 @@ def getLoadVI(dssCircuit,Load):
         Iabc phasors
 
     """
-    dssCircuit.setActiveElement('load.'+Load)
-    nNodes = 2*int(dssCircuit.ActiveCktElement.Properties('phases').val)
-    V = dssCircuit.ActiveCktElement.VoltagesMagAng
-    I = dssCircuit.ActiveCktElement.CurrentsMagAng
-    S = dssCircuit.ActiveCktElement.Powers
+    dssCircuit.SetActiveElement('load.'+Load)
+    nNodes = 2*int(dss.CktElement.Properties('phases').val)
+    V = dss.CktElement.VoltagesMagAng()
+    I = dss.CktElement.CurrentsMagAng()
+    S = dss.CktElement.Powers()
     dssCircuit.SetActiveBus(dssCircuit.ActiveCktElement.BusNames[0])
-    Vbase = dssCircuit.ActiveBus.kVBase*1000
+    Vbase = dss.Bus.kVBase()*1000
     P = [0]*int(nNodes/2)
     Q = [0]*int(nNodes/2)
     Vmag = [0]*int(nNodes/2)
@@ -571,14 +575,14 @@ def getLineVI(dssCircuit,Line):
         Iabc phasors.
 
     """
-    dssCircuit.setActiveElement('line.'+Line)
-    nNodes = len(dssCircuit.ActiveCktElement.NodeOrder)
-    V = dssCircuit.ActiveCktElement.VoltagesMagAng
-    I = dssCircuit.ActiveCktElement.CurrentsMagAng
-    S = dssCircuit.ActiveCktElement.Powers
-    Iseq = dssCircuit.ActiveCktElement.SeqCurrents
-    dssCircuit.SetActiveBus(dssCircuit.ActiveCktElement.BusNames[0])
-    Vbase = dssCircuit.ActiveBus.kVBase*1000
+    dssCircuit.SetActiveElement('line.'+Line)
+    nNodes = len(dss.CktElement.NodeOrder())
+    V = dss.CktElement.VoltagesMagAng()
+    I = dss.CktElement.CurrentsMagAng()
+    S = dss.CktElement.Powers()
+    Iseq = dss.CktElement.SeqCurrents()
+    dssCircuit.SetActiveBus(dss.CktElement.BusNames()[0])
+    Vbase = dss.Bus.kVBase()*1000
     P = [0]*int(nNodes/2)
     Q = [0]*int(nNodes/2)
     Vmag = [0]*int(nNodes/2)
@@ -620,7 +624,7 @@ def simFaults(faultBuses,Type,faultBusPhases,Fres,devLines,devNames,dev_BusV,dss
     dssText.command = 'set mode=dynamic controlmode=time'
     dssText.command = 'set stepsize=0.0002s number=500'
     dssText.Command = 'solve'
-    if(dssCircuit.Solution.Converged):
+    if(dss.Solution.Converged()):
         for ii in range(len(devLines)):
             data[ii][0] = faultBuses
             data[ii][1] = devNames[ii]

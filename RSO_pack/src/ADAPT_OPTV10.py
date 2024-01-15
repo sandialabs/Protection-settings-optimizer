@@ -611,7 +611,7 @@ def runSettingsOptimizer(Main_dir,switchStates,switchLines,Device_Data_CSV,Fault
                 Mn_max = ProDevRef[ii]['IgmaxSLG']/(ProDevRef[ii]['In']*1.25) 
                 ProDevRef[ii]['MX'] = [Mp_min,Mp_max,Mn_min,Mn_max]
                 
-                if(min([Mp_min,Mn_min])<=dt_th and Mp_max/Mp_min <=100):
+                if(Mp_min != 0 and min([Mp_min,Mn_min])<=dt_th and Mp_max/Mp_min <=100):
                     ProDevRef[ii]['Type'] = 'Relay_DT' 
                 # elif(min([Mp_min,Mn_min])>dt_th and Mp_max/Mp_min >100):
                 #     ProDevRef[ii]['Type'] = 'Relay_Dist'  

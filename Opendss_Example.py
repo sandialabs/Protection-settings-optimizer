@@ -7,20 +7,10 @@ Created on Mon Jan  9 22:10:50 2023
 # Example OpenDSS Input 
 import os
 import RSO_pack
-#import win32com.client
 import opendssdirect as dss
 
 pwd = os.getcwd()
 
-# Start OpenDSS
-'''
-dssObj = win32com.client.Dispatch("OpenDSSEngine.DSS")
-dssText = dssObj.Text
-dssCircuit = dssObj.ActiveCircuit
-#dssSolution = dssCircuit.Solution 
-#dssElem = dssCircuit.ActiveCktElement 
-#dssBus = dssCircuit.ActiveBus
-'''
 # Start Run IEEE 34 bus system
 dss.run_command('clear')
 dss.run_command('compile '+ os.path.join(pwd,'Examples','IEEE34_OpenDSS','IEEE34Test.dss'))
@@ -35,7 +25,7 @@ SysInfo = RSO_pack.getSysInfo(dssCircuit)
 
 # %% collect steady state Data
 Buses = SysInfo['Buses']
-devLines = [x['MonitoredObj'].split('line.')[1] for x in SysInfo['Relays']]+[x['MonitoredObj'].split('line.')[1] for x in SysInfo['Recs']]
+devLines = [x['MonitoredObj'].split('Line.')[1] for x in SysInfo['Relays']]+[x['MonitoredObj'].split('Line.')[1] for x in SysInfo['Recs']]
 devNames = [x['Name'] for x in SysInfo['Relays']]+[x['Name'] for x in SysInfo['Recs']]
 dev_BusV = [Buses[RSO_pack.index_dict(Buses,'Name',x['Bus1'])]['kV']*1e3 for x in SysInfo['Relays'] ]+[Buses[RSO_pack.index_dict(Buses,'Name',x['Bus1'])]['kV']*1e3 for x in SysInfo['Recs'] ]
 
