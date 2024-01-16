@@ -41,7 +41,7 @@ Fres = ['0.001','1']
 Fts = ['3ph','SLG','LL']
 
 FData = RSO_pack.getFaultInfo(dssCircuit,dssText,faultBuses,faultBusPhases,Fres,Fts,devLines,devNames,dev_BusV)
-Fault_File_loc = pwd+'FData.csv'
+Fault_File_loc = os.path.join(pwd,'FData.csv')
 FData.to_csv(Fault_File_loc,index=False,header=False)
 Fault_Data_CSV = RSO_pack.read_Fault_CSV_Data(Fault_File_loc)
 
