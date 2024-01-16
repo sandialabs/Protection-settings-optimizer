@@ -4,6 +4,12 @@ The Protection settings optimizer (PSO) is a Python package for calculating opti
 
 ![Protection settings optimizer (PSO) overview](PSOoverview.png)
 
+### Installation
+
+```sh
+python -m pip install git+https://github.com/lilycatolson/Protection-settings-optimizer.git
+```
+
 # Optimizer input Data and format
 
 ## 1) System information

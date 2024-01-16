@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup, find_packages #distutils.core import setup
 
 with open('README.md',encoding="utf8") as f:
         long_description = f.read()
@@ -14,7 +14,7 @@ setup(
         #author='',
         #author_email='',
         url='https://github.com/lilycatolson/Protection-settings-optimizer', #change to /sandialabs/ before merging
-        packages = ['RSO_pack'],
+        packages = find_packages(), #['RSO_pack'],
         include_package_data=True,
         setup_requires=reqs,
         install_requires=reqs
