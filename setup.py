@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 with open('README.md',encoding="utf8") as f:
         long_description = f.read()
 
-reqs = open('RSO_pack/requirements.txt').readlines()
+reqs = open('requirements.txt').readlines()
 
 setup(
         name='RSO_pack',

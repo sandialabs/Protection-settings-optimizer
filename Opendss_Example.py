@@ -7,18 +7,23 @@ Created on Mon Jan  9 22:10:50 2023
 # Example OpenDSS Input 
 import os
 import RSO_pack
-import opendssdirect as dss
+from dss import DSS as dssObj
 
 pwd = os.getcwd()
 
-# Start Run IEEE 34 bus system
-dss.run_command('clear')
-dss.run_command('compile '+ os.path.join(pwd,'Examples','IEEE34_OpenDSS','IEEE34Test.dss'))
-dss.run_command('set maxcontroliter = 500')
-dss.run_command('solve')
+# Start OpenDSS
 
-dssText = dss.Text
-dssCircuit = dss.Circuit
+dssText = dssObj.Text
+dssCircuit = dssObj.ActiveCircuit
+dssSolution = dssCircuit.Solution
+dssElem = dssCircuit.ActiveCktElement
+dssBus = dssCircuit.ActiveBus
+
+# Start Run IEEE 34 bus system
+dssText.Command = 'clear'
+dssText.Command = 'compile '+pwd+'\\Examples\\IEEE34_OpenDSS\\IEEE34Test.dss'
+dssText.Command = 'set maxcontroliter = 500'
+dssText.Command = 'solve'
 
 # collect system info from OpenDSS
 SysInfo = RSO_pack.getSysInfo(dssCircuit)
