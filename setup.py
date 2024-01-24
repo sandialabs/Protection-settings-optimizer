@@ -13,9 +13,10 @@ setup(
         long_description=long_description,
         #author='',
         #author_email='',
-        url='https://github.com/lilycatolson/Protection-settings-optimizer', #change to /sandialabs/ before merging
+        url='https://github.com/sandialabs/Protection-settings-optimizer',
         packages = find_packages(),
         include_package_data=True,
         setup_requires=reqs,
-        install_requires=reqs
+        install_requires=reqs,
+        license = 'GPLv3'
 )
