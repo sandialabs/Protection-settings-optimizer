@@ -26,12 +26,12 @@ Sho_Plots=False
 # %% Input Data files
 Substation_bus = 'sourcebus'
 initpop = None
-Device_Data_File = pwd + '\\Examples\\Adapt_Data\\outputV1_624.csv'
+Device_Data_File = os.path.join(pwd,'Examples','Adapt_Data','outputV1_624.csv')
 
-Fault_Data_File = pwd + '\\Examples\\Adapt_Data\\fault_report_624.csv'
+Fault_Data_File = os.path.join(pwd,'Examples','Adapt_Data','fault_report_624.csv')
 
 # load system data
-jsonFile = Main_dir+'\\Examples\\IEEE123_SysInfo.json' 
+jsonFile = os.path.join(Main_dir,'Examples','IEEE123_SysInfo.json') 
 f = open(jsonFile) 
 IEEE123_SysInfo = json.load(f)
 

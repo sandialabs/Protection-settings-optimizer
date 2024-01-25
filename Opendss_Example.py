@@ -6,21 +6,13 @@ Created on Mon Jan  9 22:10:50 2023
 """
 # Example OpenDSS Input 
 import os
-import json
 import RSO_pack
-import numpy as np
-import pandas as pd
-import win32com.client
-import matplotlib.pyplot as plt
-
-from RSO_pack.src.Read_CSV_Functions import pdef
-from RSO_pack.src.Read_CSV_Functions import abc2012
-
+from dss import DSS as dssObj
 
 pwd = os.getcwd()
 
 # Start OpenDSS
-dssObj = win32com.client.Dispatch("OpenDSSEngine.DSS")
+
 dssText = dssObj.Text
 dssCircuit = dssObj.ActiveCircuit
 dssSolution = dssCircuit.Solution
@@ -30,7 +22,7 @@ dssBus = dssCircuit.ActiveBus
 # Start Run IEEE 34 bus system
 dssText.Command = 'clear'
 dssText.Command = 'compile '+pwd+'\\Examples\\IEEE34_OpenDSS\\IEEE34Test.dss'
-dssText.command = 'set maxcontroliter = 500'
+dssText.Command = 'set maxcontroliter = 500'
 dssText.Command = 'solve'
 
 # collect system info from OpenDSS
@@ -38,7 +30,7 @@ SysInfo = RSO_pack.getSysInfo(dssCircuit)
 
 # %% collect steady state Data
 Buses = SysInfo['Buses']
-devLines = [x['MonitoredObj'].split('line.')[1] for x in SysInfo['Relays']]+[x['MonitoredObj'].split('line.')[1] for x in SysInfo['Recs']]
+devLines = [x['MonitoredObj'].split('Line.')[1] for x in SysInfo['Relays']]+[x['MonitoredObj'].split('Line.')[1] for x in SysInfo['Recs']]
 devNames = [x['Name'] for x in SysInfo['Relays']]+[x['Name'] for x in SysInfo['Recs']]
 dev_BusV = [Buses[RSO_pack.index_dict(Buses,'Name',x['Bus1'])]['kV']*1e3 for x in SysInfo['Relays'] ]+[Buses[RSO_pack.index_dict(Buses,'Name',x['Bus1'])]['kV']*1e3 for x in SysInfo['Recs'] ]
 
@@ -54,7 +46,7 @@ Fres = ['0.001','1']
 Fts = ['3ph','SLG','LL']
 
 FData = RSO_pack.getFaultInfo(dssCircuit,dssText,faultBuses,faultBusPhases,Fres,Fts,devLines,devNames,dev_BusV)
-Fault_File_loc = pwd+'FData.csv'
+Fault_File_loc = os.path.join(pwd,'FData.csv')
 FData.to_csv(Fault_File_loc,index=False,header=False)
 Fault_Data_CSV = RSO_pack.read_Fault_CSV_Data(Fault_File_loc)
 

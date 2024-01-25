@@ -8,21 +8,14 @@ Created on Wed Feb  1 01:58:04 2023
 import os
 import json
 import RSO_pack
-import numpy as np
-import pandas as pd
-import win32com.client
-import matplotlib.pyplot as plt
-
-from RSO_pack.src.Read_CSV_Functions import pdef
-from RSO_pack.src.Read_CSV_Functions import abc2012
 
 # %% 
 pwd = os.getcwd()
 Main_dir = pwd
 # import data for RONM JSON file
-jsonFile = pwd+'\\Examples\\RONM_Data\\output.ieee13.faults.json' 
+jsonFile = os.path.join(pwd,'Examples','RONM_Data','output.ieee13.faults.json') 
 Main_dir = pwd
-f = open(jsonFile) 
+f = open(jsonFile)
 jsonDict = json.load(f)
 f.close()
 
@@ -35,7 +28,7 @@ SysInfo = RSO_pack.getRONMSysInfo(proSettings,powerFlow,ignore_fuse=True)
 devTimeLine = jsonDict['Device action timeline']
 (sW_Status,sW_Names) = RSO_pack.get_Sw_Status(jsonDict['Powerflow output'],devTimeLine)
 
-# %% Calculate devie Data 
+# %% Calculate device Data 
 Buses = SysInfo['Buses']
 Relay_list = [x['MonitoredObj'].split('line.')[1] for x in SysInfo['Relays']] 
 Reclo_list = [x['MonitoredObj'].split('line.')[1] for x in SysInfo['Recs']]
@@ -48,7 +41,7 @@ dev_BusV = [Buses[RSO_pack.index_dict(Buses,'Name',x['Bus1'])]['kV']*1e3 for x i
 # create settings list 
 settings = []*len(devTimeLine)
 
-# %% itterate per step and calcualte settings  
+# %% iterate per step and calculate settings  
 for Ts in range(len(devTimeLine)):
     print('------======'+str(Ts)+'======------\n')
     # get switch states
@@ -68,7 +61,7 @@ for Ts in range(len(devTimeLine)):
     
     # %% Run optimizer
     
-    # settigns 
+    # settings 
     Force_NOIBR = 0
     DOC = 1
     enableIT = 0

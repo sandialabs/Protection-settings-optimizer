@@ -611,7 +611,7 @@ def runSettingsOptimizer(Main_dir,switchStates,switchLines,Device_Data_CSV,Fault
                 Mn_max = ProDevRef[ii]['IgmaxSLG']/(ProDevRef[ii]['In']*1.25) 
                 ProDevRef[ii]['MX'] = [Mp_min,Mp_max,Mn_min,Mn_max]
                 
-                if(min([Mp_min,Mn_min])<=dt_th and Mp_max/Mp_min <=100):
+                if(Mp_min != 0 and min([Mp_min,Mn_min])<=dt_th and Mp_max/Mp_min <=100):
                     ProDevRef[ii]['Type'] = 'Relay_DT' 
                 # elif(min([Mp_min,Mn_min])>dt_th and Mp_max/Mp_min >100):
                 #     ProDevRef[ii]['Type'] = 'Relay_Dist'  
@@ -783,13 +783,13 @@ def runSettingsOptimizer(Main_dir,switchStates,switchLines,Device_Data_CSV,Fault
         import importlib
         import sys
         # Reload Fit and con functions 
-        spec = importlib.util.spec_from_file_location(Objfile, Main_dir+'\\'+Objfile+'.py')
+        spec = importlib.util.spec_from_file_location(Objfile, os.path.join(Main_dir,f'{Objfile}.py'))
         module = importlib.util.module_from_spec(spec)
         sys.modules[Objfile] = module
         spec.loader.exec_module(module)
         fitness_func = module.fitness_func
         
-        spec1 = importlib.util.spec_from_file_location(Objfile+'_con', Main_dir+'\\'+Objfile+'_con.py')
+        spec1 = importlib.util.spec_from_file_location(Objfile+'_con', os.path.join(Main_dir,f'{Objfile}_con.py'))
         module1 = importlib.util.module_from_spec(spec1)
         sys.modules[Objfile+'_con'] = module1
         spec1.loader.exec_module(module1)
@@ -802,7 +802,7 @@ def runSettingsOptimizer(Main_dir,switchStates,switchLines,Device_Data_CSV,Fault
                                 num_genes=len(CVMax),
                                 gene_space=gs,
                                 mutation_by_replacement=True,
-                                fitness_func=fitness_func,
+                                fitness_func= lambda ga_instance, solution, solution_idx : fitness_func(solution,solution_idx),
                                 on_generation=on_generation,
                                 gene_type=int,
                                 save_solutions = False,
