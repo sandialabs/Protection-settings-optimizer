@@ -414,7 +414,7 @@ def getRecloserInfo(dssCircuit):
             dssCircuit.SetActiveElement('Recloser.'+Rec_names[ii])
             Rec[ii]['Name'] = dssCircuit.ActiveCktElement.Name.split('.')[1]
             Rec[ii]['Enabled'] = dssCircuit.ActiveCktElement.Enabled
-            Rec[ii]['MonitoredObj'] = dssCircuit.ActiveCktElement.Properties('MonitoredObj').val;
+            Rec[ii]['MonitoredObj'] = dssCircuit.ActiveCktElement.Properties('MonitoredObj').Val
             # change Active Circuit to Reclosers 
             dssCircuit.SetActiveElement(Rec[ii]['MonitoredObj'])
             Rec[ii]['Bus1'] = dssCircuit.ActiveCktElement.BusNames[0].split('.')[0]
