@@ -98,7 +98,7 @@ def getFaultInfo(dssCircuit,dssText,faultBuses,faultBusPhases,Fres,Fts,devLines,
     faultBusPhases : List
         number of Phases for each fault bus.
     Fres : List
-        List of fault resistacnes to test.
+        List of fault resistances to test.
     Fts : List
         Name of Fault types, supported types ('3ph','LL','SLG').
     devLines : List
@@ -128,7 +128,7 @@ def getFaultInfo(dssCircuit,dssText,faultBuses,faultBusPhases,Fres,Fts,devLines,
                 if(type(NewData)!=int):
                     FData = pd.concat([FData,NewData],)
                 else:
-                    print('Cannot Get '+Ft+' fatult data for bus '+faultBuses[ii])
+                    print('Cannot Get '+Ft+' fault data for bus '+faultBuses[ii])
     return FData
 
 # %% greate systeminfo json file
@@ -157,7 +157,6 @@ def getSysInfo(dssCircuit):
     Pvs = getPvInfo(dssCircuit)
     BESS = getBESSInfo(dssCircuit)
     Gens = getGeneratorInfo(dssCircuit)
-    
     
     SysInfo = {"Relays": Relays,"Recs": Recs ,"Fuses": Fuses,"Lines": Lines, "XFMRs": XFMRs, "Buses": Buses, "Pvs": Pvs, "BESS": BESS,"Gens": Gens}
     return SysInfo
@@ -245,7 +244,7 @@ def getPvInfo(dssCircuit):
     dssCircuit.SetActiveClass('PVSystem')
     Pv_names = dssCircuit.PVSystems.AllNames    # get list of PVs in the system names
     nPV = len(Pv_names)
-    if nPV == 0:    # if no PVs in systems return empty dict
+    if nPV == 0 or Pv_names[0] == 'NONE':    # if no PVs in systems return empty dict
         PVs = {}
         return(PVs)
     else:          # get PV systme Name, Location, status and number of phases
