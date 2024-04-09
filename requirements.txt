@@ -1,6 +1,6 @@
 matplotlib==3.7.2
 networkx==3.1
 numpy==1.24.3
-pandas>=2.0.3
+pandas
 pygad==3.2.0
-dss_python>=0.15.7
+dss_python
