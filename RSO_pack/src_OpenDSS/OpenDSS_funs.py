@@ -613,7 +613,7 @@ def simFaults(faultBuses,Type,faultBusPhases,Fres,devLines,devNames,dev_BusV,dss
         Ftype2 = '.0 '
     else:
         return -1
-    
+
     # Simulate and collect
     dssText.Command = 'edit Fault.F1 bus2='+faultBuses+Ftype2+' bus1='+faultBuses+Ftype1+' r='+Fres+' enabled=true ontime=0.05'
     dssText.Command = 'set mode=dynamic controlmode=time'
@@ -674,7 +674,7 @@ def simFaults(faultBuses,Type,faultBusPhases,Fres,devLines,devNames,dev_BusV,dss
                 data[ii][14] = 0#None
                 data[ii][15] = I[0] #np.abs(I0)
                 data[ii][16] = I[1] #np.angle(I0)*(180/np.pi)
-            else:
-                print('Failed to Converge for a '+ Ftype +' fault on bus'+faultBuses[ii]+'with res='+Fres)
+    else:
+        print('Failed to converge for a ' + Ftype + ' fault with res=' + Fres)
         
     return pd.DataFrame(data)
