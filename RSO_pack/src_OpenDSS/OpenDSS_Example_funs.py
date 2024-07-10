@@ -1,6 +1,9 @@
 import os, json
 from dss import DSS as dssObj
-import OpenDSS_funs
+from .OpenDSS_funs import getSysInfo, getFaultInfo, getDeviceData
+from ..src.GenNxGraph import index_dict
+from ..src.Read_CSV_Functions import read_Fault_CSV_Data
+from ..src.ADAPT_OPTV10 import runSettingsOptimizer
 
 pwd = os.getcwd()
 
@@ -21,8 +24,8 @@ def parseSysInfo(SysInfo):
     devLines += [x['MonitoredObj'].split('Line.')[1] for x in SysInfo['Recs']]
     devNames = [x['Name'] for x in SysInfo['Relays']]
     devNames += [x['Name'] for x in SysInfo['Recs']]
-    dev_BusV = [Buses[OpenDSS_funs.index_dict(Buses,'Name',x['Bus1'])]['kV']*1e3 for x in SysInfo['Relays'] ]
-    dev_BusV += [Buses[OpenDSS_funs.index_dict(Buses,'Name',x['Bus1'])]['kV']*1e3 for x in SysInfo['Recs'] ]
+    dev_BusV = [Buses[index_dict(Buses,'Name',x['Bus1'])]['kV']*1e3 for x in SysInfo['Relays'] ]
+    dev_BusV += [Buses[index_dict(Buses,'Name',x['Bus1'])]['kV']*1e3 for x in SysInfo['Recs'] ]
     return Buses, devLines, devNames, dev_BusV
 
 def parseFaultInfo(Buses):
@@ -30,7 +33,7 @@ def parseFaultInfo(Buses):
     faultBuses = [x['Name'] for x in Buses]
     faultBusPhases = [None]*len(faultBuses)
     for ii in range(len(faultBuses)):
-        faultBusPhases[ii] = Buses[OpenDSS_funs.index_dict(Buses,'Name',faultBuses[ii])]['nodes']
+        faultBusPhases[ii] = Buses[index_dict(Buses,'Name',faultBuses[ii])]['nodes']
        
     return faultBuses, faultBusPhases
 
@@ -38,7 +41,7 @@ def loadFaultCSV(FData, testPath):
     ''' copies the Fault data in FData to <testPath>/FData.csv'''
     Fault_File_loc = os.path.normpath(os.path.join(testPath,'FData.csv'))
     FData.to_csv(Fault_File_loc,index=False,header=False)
-    Fault_Data_CSV = OpenDSS_funs.read_Fault_CSV_Data(Fault_File_loc)
+    Fault_Data_CSV = read_Fault_CSV_Data(Fault_File_loc)
     return Fault_Data_CSV
 
 def parseSwitchInfo(SysInfo):
@@ -73,19 +76,19 @@ def run(testPath, testFile, Fres=['0.001','1'], Fts=['3ph','SLG','LL'], Force_NO
 
     dssText, dssCircuit = runDSS(os.path.normpath(os.path.join(testPath, testFile)))
     # collect system info from OpenDSS
-    SysInfo = OpenDSS_funs.getSysInfo(dssCircuit)
+    SysInfo = getSysInfo(dssCircuit)
 
     Buses, devLines, devNames, dev_BusV = parseSysInfo(SysInfo)
-    Device_Data_CSV = OpenDSS_funs.getDeviceData(dssCircuit,devNames,devLines,dev_BusV)
+    Device_Data_CSV = getDeviceData(dssCircuit,devNames,devLines,dev_BusV)
 
     # collect fault data 
     faultBuses, faultBusPhases = parseFaultInfo(Buses)
 
-    FData = OpenDSS_funs.getFaultInfo(dssCircuit,dssText,faultBuses,faultBusPhases,Fres,Fts,devLines,devNames,dev_BusV)
+    FData = getFaultInfo(dssCircuit,dssText,faultBuses,faultBusPhases,Fres,Fts,devLines,devNames,dev_BusV)
     Fault_Data_CSV = loadFaultCSV(FData, testPath)
 
     switchLines, switchStates = parseSwitchInfo(SysInfo)
-    settings,old_info = OpenDSS_funs.runSettingsOptimizer(testPath,
+    settings,old_info = runSettingsOptimizer(testPath,
                                                  switchStates,
                                                  switchLines,
                                                  Device_Data_CSV,
