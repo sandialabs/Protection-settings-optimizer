@@ -102,7 +102,8 @@ def calcZ1Z0ANG(Rname,Device_Data_CSV,Fault_Data_CSV,G,B1,B2,Show_Warnings):
         AminmaxFR = [max(AF),min(AF),(max(AF)+180) % 360,(min(AF)+180) % 360]
     elif(len(AR)>0 and len(AF)==0):
         AminmaxFR = [(max(AR)+180) % 360,(min(AR)+180) % 360,max(AR),min(AR)]
-    
+    else:
+        AminmaxFR = []
     # find min max of angles for Z0
     if(len(A0F)>0 and len(A0R)>0):
         A0minmaxFR = [max(A0F),min(A0F),max(A0R),min(A0R)]
@@ -110,19 +111,25 @@ def calcZ1Z0ANG(Rname,Device_Data_CSV,Fault_Data_CSV,G,B1,B2,Show_Warnings):
         A0minmaxFR = [max(A0F),min(A0F),(max(A0F)+180) % 360,(min(A0F)+180) % 360]
     elif(len(A0R)>0 and len(A0F)==0):
         A0minmaxFR = [(max(A0R)+180) % 360,(min(A0R)+180) % 360,max(A0R),min(A0R)]
-        
+    else:
+        A0minmaxFR = []
     # Find Z1Ang
-    if(abs(AminmaxFR[0]-AminmaxFR[2]) <= abs(AminmaxFR[1]-AminmaxFR[3])):
-        x = AminmaxFR[0] + abs(AminmaxFR[0]-AminmaxFR[2])/2 - 90
+    if(len(AminmaxFR)>0):
+        if(abs(AminmaxFR[0]-AminmaxFR[2]) <= abs(AminmaxFR[1]-AminmaxFR[3])):
+            x = AminmaxFR[0] + abs(AminmaxFR[0]-AminmaxFR[2])/2 - 90
+        else:
+            x = AminmaxFR[1] - abs(AminmaxFR[1]-AminmaxFR[3])/2 + 90
     else:
-        x = AminmaxFR[1] - abs(AminmaxFR[1]-AminmaxFR[3])/2 + 90
-    
+        x = 45;
     # Find Z0ANG
-    if(abs(A0minmaxFR[0]-A0minmaxFR[2]) <= abs(A0minmaxFR[1]-A0minmaxFR[3])):
-        x0= A0minmaxFR[0] + abs(A0minmaxFR[0]-A0minmaxFR[2])/2 - 90
+    if(len(A0minmaxFR)>0):
+        if(abs(A0minmaxFR[0]-A0minmaxFR[2]) <= abs(A0minmaxFR[1]-A0minmaxFR[3])):
+            x0= A0minmaxFR[0] + abs(A0minmaxFR[0]-A0minmaxFR[2])/2 - 90
+        else:
+            x0= A0minmaxFR[1] - abs(A0minmaxFR[1]-A0minmaxFR[3])/2 + 90
     else:
-        x0= A0minmaxFR[1] - abs(A0minmaxFR[1]-A0minmaxFR[3])/2 + 90
-    
+        x = 45;
+        
     # angle is within 360
     x = x % 360
     x0 = x0 % 360

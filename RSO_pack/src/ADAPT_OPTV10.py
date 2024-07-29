@@ -846,7 +846,7 @@ def runSettingsOptimizer(Main_dir,switchStates,switchLines,Device_Data_CSV,Fault
             Relay_settings[ii]['VR'] = [solution[CtrlDev[ii]-2]>6 or solution[CtrlDev[ii]-1]>6][0]
             Relay_settings[ii]['IT'] = ProDevRef[ii]['IT']
             Relay_settings[ii]['IT0'] = ProDevRef[ii]['ITg']
-            if(DOC == 1):
+            if(DOC == 1 and SetDir):
                 Relay_settings[ii]['Z1MAG'] = ProDevRef[ii]['Z1MAG']
                 Relay_settings[ii]['Z1ANG'] =ProDevRef[ii]['Z1ANG']
                 Relay_settings[ii]['Z0MAG'] = ProDevRef[ii]['Z0MAG']

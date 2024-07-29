@@ -99,8 +99,8 @@ def write_GA_fit_fun(CtrlDev,ProDevRef,Pairs,M2,fundir,fileName,CTI,OTmax):
                     fileID.write('# cons for jj:'+str(jj)+' FF:'+str(FF)+'\n') 
                     Test_Val = [Farray[jj][FI[FF]]/ProDevRef[P_ind]['Ip'],Farray[jj][VI[FF]],Bacdat[0][FI[FF]]/ProDevRef[B_ind]['Ip'],Bacdat[0][VI[FF]]] 
                      
-                    if( (Farray[jj][FI[FF]]/ProDevRef[P_ind]['Ip']>=1.2) and
-                        (Bacdat[0][FI[FF]]/ProDevRef[B_ind]['Ip']>=1.2) ):
+                    if( (Farray[jj][FI[FF]]/ProDevRef[P_ind]['Ip']>=1.2 ) and
+                        (Bacdat[0][FI[FF]]/ProDevRef[B_ind]['Ip']>=1.2) and Test_Val[3]<0.95):
                             
                         if(Pairs[ii][4] == 'Relay_TOC'):
                             fileID.write('\tT1 =  OCOT('+str(Farray[jj][FI[FF]]/ProDevRef[P_ind]['Ip'])+',TDS'+str(P_ind)+',relayType'+str(P_ind)+','+str(Farray[jj][VI[FF]])+')\n')
