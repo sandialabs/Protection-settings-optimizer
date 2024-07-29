@@ -154,7 +154,7 @@ def runSettingsOptimizer(Main_dir,switchStates,switchLines,Device_Data_CSV,Fault
     print("Relays : %d, Recs: %d, Fuses: %d,Total Devices: %d"  % (nRelays,nRec,nFuse,nProDevices))
     
     if(nProDevices == 0):
-        print('No deives to set')
+        print('No devices to set')
         return [],[]
     ProDevices = [dict.fromkeys(['Bus1','Bus2','phases','Line','Direction','Name','Type','Vpu','IL','In','Ip','Inp','Imax3ph','Imin3ph','Vmax3ph','Vmin3ph','Igmax3ph','Igmin3ph',\
                   'ImaxLL','IminLL','VmaxLL','VminLL','IgmaxLL','IgminLL','ImaxSLG','IminSLG','VmaxSLG','VminSLG','IgmaxSLG','IgminSLG','IT','ITg','Oind']) for number in range(nProDevices)]
