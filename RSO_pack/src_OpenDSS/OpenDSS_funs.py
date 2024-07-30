@@ -98,7 +98,7 @@ def getFaultInfo(dssCircuit,dssText,faultBuses,faultBusPhases,Fres,Fts,devLines,
     faultBusPhases : List
         number of Phases for each fault bus.
     Fres : List
-        List of fault resistacnes to test.
+        List of fault resistances to test.
     Fts : List
         Name of Fault types, supported types ('3ph','LL','SLG').
     devLines : List
@@ -128,7 +128,7 @@ def getFaultInfo(dssCircuit,dssText,faultBuses,faultBusPhases,Fres,Fts,devLines,
                 if(type(NewData)!=int):
                     FData = pd.concat([FData,NewData],)
                 else:
-                    print('Cannot Get '+Ft+' fatult data for bus '+faultBuses[ii])
+                    print('Cannot Get '+Ft+' fault data for bus '+faultBuses[ii])
     return FData
 
 # %% greate systeminfo json file
@@ -157,7 +157,6 @@ def getSysInfo(dssCircuit):
     Pvs = getPvInfo(dssCircuit)
     BESS = getBESSInfo(dssCircuit)
     Gens = getGeneratorInfo(dssCircuit)
-    
     
     SysInfo = {"Relays": Relays,"Recs": Recs ,"Fuses": Fuses,"Lines": Lines, "XFMRs": XFMRs, "Buses": Buses, "Pvs": Pvs, "BESS": BESS,"Gens": Gens}
     return SysInfo
@@ -245,7 +244,7 @@ def getPvInfo(dssCircuit):
     dssCircuit.SetActiveClass('PVSystem')
     Pv_names = dssCircuit.PVSystems.AllNames    # get list of PVs in the system names
     nPV = len(Pv_names)
-    if nPV == 0:    # if no PVs in systems return empty dict
+    if nPV == 0 or Pv_names[0] == 'NONE':    # if no PVs in systems return empty dict
         PVs = {}
         return(PVs)
     else:          # get PV systme Name, Location, status and number of phases
@@ -415,7 +414,7 @@ def getRecloserInfo(dssCircuit):
             dssCircuit.SetActiveElement('Recloser.'+Rec_names[ii])
             Rec[ii]['Name'] = dssCircuit.ActiveCktElement.Name.split('.')[1]
             Rec[ii]['Enabled'] = dssCircuit.ActiveCktElement.Enabled
-            Rec[ii]['MonitoredObj'] = dssCircuit.ActiveCktElement.Properties('MonitoredObj').val;
+            Rec[ii]['MonitoredObj'] = dssCircuit.ActiveCktElement.Properties('MonitoredObj').Val
             # change Active Circuit to Reclosers 
             dssCircuit.SetActiveElement(Rec[ii]['MonitoredObj'])
             Rec[ii]['Bus1'] = dssCircuit.ActiveCktElement.BusNames[0].split('.')[0]
@@ -614,7 +613,7 @@ def simFaults(faultBuses,Type,faultBusPhases,Fres,devLines,devNames,dev_BusV,dss
         Ftype2 = '.0 '
     else:
         return -1
-    
+
     # Simulate and collect
     dssText.Command = 'edit Fault.F1 bus2='+faultBuses+Ftype2+' bus1='+faultBuses+Ftype1+' r='+Fres+' enabled=true ontime=0.05'
     dssText.Command = 'set mode=dynamic controlmode=time'
@@ -676,6 +675,6 @@ def simFaults(faultBuses,Type,faultBusPhases,Fres,devLines,devNames,dev_BusV,dss
                 data[ii][15] = I[0] #np.abs(I0)
                 data[ii][16] = I[1] #np.angle(I0)*(180/np.pi)
     else:
-        print('Failed to Converge for a '+ Ftype +' fault on bus'+faultBuses[ii]+'with res='+Fres)
+        print('Failed to Converge for a '+ Ftype +' fault with res='+Fres)
         
     return pd.DataFrame(data)

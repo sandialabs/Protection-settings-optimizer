@@ -21,7 +21,7 @@ dssBus = dssCircuit.ActiveBus
 
 # Start Run IEEE 34 bus system
 dssText.Command = 'clear'
-dssText.Command = 'compile '+pwd+'\\Examples\\IEEE34_OpenDSS\\IEEE34Test.dss'
+dssText.Command = 'compile '+ os.path.join(pwd,'Examples','IEEE34_OpenDSS','IEEE34Test.dss')
 dssText.Command = 'set maxcontroliter = 500'
 dssText.Command = 'solve'
 
