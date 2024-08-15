@@ -64,7 +64,7 @@ def read_Fault_CSV_Data(File):
     fieldnames = ['busNumber','Relay','FaultType','Ia_mag','Ia_ang','Ib_mag','Ib_ang','Ic_mag','Ic_ang','Va_mag','Va_ang','Vb_mag','Vb_ang','Vc_mag','Vc_ang','x3Iz_mag','Iz_ang']
     with open(File, mode='r') as inp:
         reader = csv.DictReader(inp,fieldnames=fieldnames,dialect='excel')
-        Data = list(reader)
+        Data = [ row for row in reader if any(value != '' for value in row.values()) ]
     
     
     Fault_Data_CSV = [dict.fromkeys(['busNumber','Relay','FaultType','Ia_mag','Ia_ang','Ib_mag','Ib_ang','Ic_mag','Ic_ang','Va_mag','Va_ang','Vb_mag','Vb_ang','Vc_mag','Vc_ang','In_mag','In_ang','P','Q','Z012']) for number in range(len(Data))]    

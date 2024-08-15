@@ -154,7 +154,7 @@ def runSettingsOptimizer(Main_dir,switchStates,switchLines,Device_Data_CSV,Fault
     print("Relays : %d, Recs: %d, Fuses: %d,Total Devices: %d"  % (nRelays,nRec,nFuse,nProDevices))
     
     if(nProDevices == 0):
-        print('No deives to set')
+        print('No devices to set')
         return [],[]
     ProDevices = [dict.fromkeys(['Bus1','Bus2','phases','Line','Direction','Name','Type','Vpu','IL','In','Ip','Inp','Imax3ph','Imin3ph','Vmax3ph','Vmin3ph','Igmax3ph','Igmin3ph',\
                   'ImaxLL','IminLL','VmaxLL','VminLL','IgmaxLL','IgminLL','ImaxSLG','IminSLG','VmaxSLG','VminSLG','IgmaxSLG','IgminSLG','IT','ITg','Oind']) for number in range(nProDevices)]
@@ -190,7 +190,7 @@ def runSettingsOptimizer(Main_dir,switchStates,switchLines,Device_Data_CSV,Fault
         
     # Rec
     for ii in range(len(Recs)):
-        if(Recs[ii]['MonitoredObj'].split('line.')[1].lower() in [Name[2] for Name in list(G.edges.data('Name'))] and Recs[ii]['Enabled']):
+        if(Recs[ii]['MonitoredObj'].split('.')[1].lower() in [Name[2] for Name in list(G.edges.data('Name'))] and Recs[ii]['Enabled']):
             ProDevices[kk]['Bus1'] = Recs[ii]['Bus1']
             ProDevices[kk]['Bus2'] = Recs[ii]['Bus2']
             ProDevices[kk]['Line'] = [Edges[x]['Name'] for x in range(len(Edges))].index(Recs[ii]['MonitoredObj'].split('.')[1].lower())
@@ -216,7 +216,7 @@ def runSettingsOptimizer(Main_dir,switchStates,switchLines,Device_Data_CSV,Fault
                 kk=kk+1
     # Fuse
     for ii in range(len(Fuses)):
-        if(Fuses[ii]['MonitoredObj'].lower().split('line.')[1] in [Name[2] for Name in list(G.edges.data('Name'))]):
+        if(Fuses[ii]['MonitoredObj'].lower().split('.')[1] in [Name[2] for Name in list(G.edges.data('Name'))]):
             ProDevices[kk]['Bus1'] = Fuses[ii]['Bus1']
             ProDevices[kk]['Bus2'] = Fuses[ii]['Bus2']
             ProDevices[kk]['Line'] = [Edges[x]['Name'] for x in range(len(Edges))].index(Fuses[ii]['MonitoredObj'].lower().split('.')[1])
