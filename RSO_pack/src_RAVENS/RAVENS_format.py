@@ -518,7 +518,13 @@ def abc2012(Vabc):
     V2 = (1/3) * (Vabc[0] + a**2*Vabc[1] + a*Vabc[2]) ;
     return [V0,V1,V2]
 
-def get_Device_Data_RAVENS(data,devNames,dev_buses,devLines,Step_num):
+def get_Device_Data_RAVENS(data,SysInfo,Step_num):
+    
+    Buses = SysInfo['Buses']
+    devLines = [x['MonitoredObj'].split('line.')[1] for x in SysInfo['Relays']]+[x['MonitoredObj'].split('line.')[1] for x in SysInfo['Recs']]
+    devNames = [x['Name'] for x in SysInfo['Relays']]+[x['Name'] for x in SysInfo['Recs']]
+    dev_BusV = [Buses[index_dict(Buses,'Name',x['Bus1'])]['kV']*1e3 for x in SysInfo['Relays'] ]+[Buses[index_dict(Buses,'Name',x['Bus1'])]['kV']*1e3 for x in SysInfo['Recs']]
+    dev_buses = [x['Bus1'] for x in SysInfo['Relays']] +[x['Bus1'] for x in SysInfo['Recs']]
     
     Device_Data_CSV = [dict.fromkeys(['RelayName','Ia_mag','Ia_ang','Va_mag','Va_ang','P','Q','switchState','PVs','In']) for number in range(len(devNames))]
     
@@ -601,4 +607,5 @@ def get_system_Data_RAVENS(data,Step_num,include_Fuses = False,HCE_HC=0):
     SysInfo['Pvs'] = Pvs
     SysInfo['BESS'] = BESS
     SysInfo['Gens'] = Gens
+
     return SysInfo
