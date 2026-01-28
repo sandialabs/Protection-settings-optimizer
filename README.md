@@ -111,6 +111,21 @@ SysInfo = RSO_pack.getRONMSysInfo(proSettings,powerFlow)
 The RONM output must contain the necessary system information in 'Protection settings/network_model'.
 </details>
 
+<summary> 4) Simplified RAVENS format</summary>
+The system information can also be parsed from the simplified RAVENS Output using the code below. 
+
+```
+# Load RAVENS File 
+RAVENS_File = "Simplified_RAVENS.json"
+with open(RAVENS_File,'r') as file :
+    data = json.load(file)
+
+# Get SysInfo from Json
+SysInfo = RSO_pack.get_system_Data_RAVENS(data,Step_num)
+```
+The RAVENS output must contain the necessary system information in the simplified RAVENS format.
+</details>
+
 ## 2) load-flow/steady-state data
 The protection settings optimizer requires the steady state/load flow data to calculate settings.
 The steady-state information can be obtained from the following sources:
