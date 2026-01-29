@@ -125,6 +125,11 @@ with open(RAVENS_File,'r') as file :
 SysInfo = RSO_pack.get_system_Data_RAVENS(data,Step_num)
 ```
 The RAVENS output must contain the necessary system information in the simplified RAVENS format.
+The simplified version of the RAVENS file can be obtained using the following code
+```
+w2PL = wire2PL("RAVENS.json","Simplified_RAVENS.json")
+```
+
 </details>
 
 ## 2) load-flow/steady-state data
