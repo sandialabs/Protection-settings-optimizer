@@ -13,8 +13,10 @@ if __package__ in [None, '']:
     import src_OpenDSS
     import src_RONM
     import src_RAVENS
+    import ravens_simplier_code
 else:
     from .src import *
     from .src_OpenDSS import *
     from .src_RONM import *
     from .src_RAVENS import *
+    from .ravens_simplier_code import *
