@@ -111,6 +111,7 @@ SysInfo = RSO_pack.getRONMSysInfo(proSettings,powerFlow)
 The RONM output must contain the necessary system information in 'Protection settings/network_model'.
 </details>
 
+<details>
 <summary> 4) Simplified RAVENS format</summary>
 The system information can also be parsed from the simplified RAVENS Output using the code below. 
 
@@ -210,6 +211,17 @@ for Ts in range(len(devTimeLine)):
 ```
 </details>
 
+<details>
+<summary> 4) Import from RAVENS </summary>
+The steady-state/load flow information for each timestep included in the RAVENS output can be obtained from the "AnalysisResult" section using the following code
+
+```
+
+Device_Data_CSV =RSO_pack.get_Device_Data_RAVENS(data,SysInfo,Step_num)
+
+```
+</details>
+
 ## Fault Data
 The protection settings optimizer requires fault analysis data to calculate the protection settings. Similarly to the system information and steady-state data, one of three methods can be used to import fault data.
 <details>
@@ -270,7 +282,7 @@ Each device entry must contain the following:
  1. |V| (V) : Voltage magnitude
  2. phi (deg) : Voltage angle
  3. |I| (A) : Current magnitude  
- 4. theta (def): Voltage angle
+ 4. theta (deg): Voltage angle
  5. |I0| (A) : Zero sequence current
  6. |I1| (A) : Positive sequence current
  7. |I2| (A) : Negative sequence current
@@ -285,6 +297,24 @@ The following code can be used to read the fault analysis data from the RONM out
         faultBusPhases[ii] = Buses[RSO_pack.index_dict(Buses,'Name',faultBuses[ii])]['nodes']
 
 Fault_Data_CSV = RSO_pack.getRONMFaultData(Ts, faultBuses, devTypes, devNames, devLines, dev_BusV, jsonDict['Fault currents'][Ts])
+```
+</details>
+
+<details>
+ 
+<summary> 
+ 4) Import from RAVENS
+</summary>
+The fault information for each fault must be included in the RAVENS output under the "AnalysisResult" section. 
+The section must contain an entry for each fault and the voltages and currents observed by each device for the faults.
+
+The following code can be used to read the fault analysis data from the RONM output.
+```
+# collect Fault Data
+FData = pd.DataFrame(RSO_pack.get_fault_data_RAVENS(data,Step_num))
+Fault_File_loc = os.path.join(pwd,'FData.csv')
+FData.to_csv(Fault_File_loc,index=False,header=False)
+Fault_Data_CSV = RSO_pack.read_Fault_CSV_Data(Fault_File_loc)
 ```
 </details>
 
