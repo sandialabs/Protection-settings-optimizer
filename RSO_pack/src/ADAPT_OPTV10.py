@@ -75,8 +75,17 @@ def runSettingsOptimizer(Main_dir,switchStates,switchLines,Device_Data_CSV,Fault
     Pvs = SysInfo['Pvs']
     BESS = SysInfo['BESS']
     Gens = SysInfo['Gens']
-    
-    
+
+    if(len(Recs)+len(Relays)+len(Fuses) <1):
+        print('No devices to coordinate')
+        return -100
+    if(len(Device_Data_CSV)<1):
+        print('No devices data in power flow results')
+        return -101
+    if(len(Fault_Data_CSV)<1):
+        print('No Fault data in fault results')
+        return -200
+        
     if(Force_NOIBR == 1):
         for ii in range(len(Device_Data_CSV)):
             Device_Data_CSV[ii]['PVs'] = '0'
