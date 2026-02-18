@@ -76,7 +76,7 @@ def runSettingsOptimizer(Main_dir,switchStates,switchLines,Device_Data_CSV,Fault
     BESS = SysInfo['BESS']
     Gens = SysInfo['Gens']
 
-    if(len(Recs)+len(Relays)+len(Fuses) <1):
+    if(len(Recs)+len(Relays) <1):
         print('No devices to coordinate')
         return -100
     if(len(Device_Data_CSV)<1):
