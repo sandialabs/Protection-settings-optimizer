@@ -7,7 +7,7 @@ reqs = open('requirements.txt').readlines()
 
 setup(
         name='RSO_pack',
-        version='1.1.0',
+        version='1.1.1',
         description='Sandia Protection Settings Optimizer Algorithms',
         long_description_content_type='text/markdown',
         long_description=long_description,
