@@ -306,7 +306,7 @@ def get_Relays_RAVENS(data,Switches):
     Relays = [dict.fromkeys( {'Name','Bus1','Bus2','MonitoredObj','Enabled'}) for x in range(nRelays)]
     ii=0
     for switch in Switches:
-        if(switch['Type'] == 'Breaker' or switch['Type'] == 'ProtectedSwitch'):
+        if(switch['Type'] == 'Breaker' or switch['Type'] == 'ProtectedSwitch' or switch['Type'] == 'Sectionaliser'):
             Relays[ii]['Name'] = switch['Name']
             Relays[ii]['Bus1'] = switch['From']
             Relays[ii]['Bus2'] = switch['To']
@@ -411,17 +411,17 @@ def get_fault_data_RAVENS(data,Step_num):
         fault_Name = fault_ID.split('::')[-1][1:-1]
         fault_Info = data['Fault'][fault_Name]
         fault_loc = fault_Info['Fault.FaultyEquipment'].split('::')[-1][1:-1]
-        fault_phase = fault_Info['Fault.phases'].split('.')[-1]
+        #fault_phase = fault_Info['Fault.phases'].split('.')[-1]
         fault_res = fault_Info['Fault.impedance']['FaultImpedance.rLineToLine'] + fault_Info['Fault.impedance']['FaultImpedance.rGround']    
         fault_type = fault_Info['Fault.kind'].split('.')[-1]
-        if(fault_type == 'threePhase'):
+        if(fault_type in ['threePhase','threePhaseToGround']):
             f_type = 'TPH_R' + str(fault_res).replace('.','_')
         elif(fault_type == 'lineToGround'):
             f_type = 'SLG_A_R' + str(fault_res).replace('.','_')
-        elif(fault_type == 'lineToLine'):
+        elif(fault_type in ['lineToLine','lineToLineToGround']):
             f_type = 'BC_R' + str(fault_res).replace('.','_')
         else:
-            print('Error fault type not found\n')
+            print('Error: fault type not identified\n')
             
         for fault_phase in fault['OperationsResult.Voltages']:
             f_pro_device_ = fault_phase['ArVoltage.ConnectivityNode']
@@ -429,55 +429,61 @@ def get_fault_data_RAVENS(data,Step_num):
             f_phase_ = fault_phase['AnalysisResultData.phase']
             f_phase = fault_phase['AnalysisResultData.phase'].split('.')[-1]
             
-            step_idx = index_dict(fault_phase['AnalysisResultData.Curve']['AnalysisResultCurve.CurveDatas'],'ArCurveData.xvalue',Step_num)
-            f_Vang = fault_phase['AnalysisResultData.Curve']['AnalysisResultCurve.CurveDatas'][step_idx]['ArCurveData.DataValues']['AvVoltage.angle']
-            f_Vmag = fault_phase['AnalysisResultData.Curve']['AnalysisResultCurve.CurveDatas'][step_idx]['ArCurveData.DataValues']['AvVoltage.v']
-
-            curretns = [x for x in fault['OperationsResult.CurrentFlows'] if x['AnalysisResultData.phase'] == f_phase_ and x['ArCurrent.ConnectivityNode'] == f_pro_device_][0]
-            f_Imag = curretns['AnalysisResultData.Curve']['AnalysisResultCurve.CurveDatas'][step_idx]['ArCurveData.DataValues']['AvCurrent.i']
-            f_Iang = curretns['AnalysisResultData.Curve']['AnalysisResultCurve.CurveDatas'][step_idx]['ArCurveData.DataValues']['AvCurrent.angle']
-            
-            F_idx = next((x for x,sublist in enumerate(FData) if (sublist[0] == fault_loc and sublist[1] == f_pro_device and sublist[2] == f_type)),None)
-            if F_idx is None: 
-                FData.append([fault_loc,f_pro_device,f_type,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
-                if(f_phase == 'A'):
-                    FData[-1][3] = f_Imag
-                    FData[-1][4] = f_Iang
-                    
-                    FData[-1][9] = f_Vmag
-                    FData[-1][10] = f_Vang
-                if(f_phase == 'B'):
-                    FData[-1][5] = f_Imag
-                    FData[-1][6] = f_Iang
-                    
-                    FData[-1][11] = f_Vmag
-                    FData[-1][12] = f_Vang
-                if(f_phase == 'C'):
-                    FData[-1][7] = f_Imag
-                    FData[-1][8] = f_Iang
-                    
-                    FData[-1][13] = f_Vmag
-                    FData[-1][14] = f_Vang
+            if('AnalysisResultData.Curve' in fault_phase.keys()):
+                step_idx = index_dict(fault_phase['AnalysisResultData.Curve']['AnalysisResultCurve.CurveDatas'],'ArCurveData.xvalue',Step_num)
+                if(step_idx is not None):
+                    f_Vang = fault_phase['AnalysisResultData.Curve']['AnalysisResultCurve.CurveDatas'][step_idx]['ArCurveData.DataValues']['AvVoltage.angle']
+                    f_Vmag = fault_phase['AnalysisResultData.Curve']['AnalysisResultCurve.CurveDatas'][step_idx]['ArCurveData.DataValues']['AvVoltage.v']
+                    curretns = [x for x in fault['OperationsResult.CurrentFlows'] if x['AnalysisResultData.phase'] == f_phase_ and x['ArCurrent.ConnectivityNode'] == f_pro_device_ and 'AnalysisResultData.Curve' in x.keys()][0]
+                    f_Imag = curretns['AnalysisResultData.Curve']['AnalysisResultCurve.CurveDatas'][step_idx]['ArCurveData.DataValues']['AvCurrent.i']
+                    f_Iang = curretns['AnalysisResultData.Curve']['AnalysisResultCurve.CurveDatas'][step_idx]['ArCurveData.DataValues']['AvCurrent.angle']
+                else:
+                    continue
+                
+                F_idx = next((x for x,sublist in enumerate(FData) if (sublist[0] == fault_loc and sublist[1] == f_pro_device and sublist[2] == f_type)),None)
+                if F_idx is None: 
+                    FData.append([fault_loc,f_pro_device,f_type,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+                    if(f_phase == 'A'):
+                        FData[-1][3] = f_Imag
+                        FData[-1][4] = f_Iang
+                        
+                        FData[-1][9] = f_Vmag
+                        FData[-1][10] = f_Vang
+                    if(f_phase == 'B'):
+                        FData[-1][5] = f_Imag
+                        FData[-1][6] = f_Iang
+                        
+                        FData[-1][11] = f_Vmag
+                        FData[-1][12] = f_Vang
+                    if(f_phase == 'C'):
+                        FData[-1][7] = f_Imag
+                        FData[-1][8] = f_Iang
+                        
+                        FData[-1][13] = f_Vmag
+                        FData[-1][14] = f_Vang
+                else:
+                    if(f_phase == 'A'):
+                        FData[F_idx][3] = f_Imag
+                        FData[F_idx][4] = f_Iang
+                        
+                        FData[F_idx][9] = f_Vmag
+                        FData[F_idx][10] = f_Vang
+                    if(f_phase == 'B'):
+                        FData[F_idx][5] = f_Imag
+                        FData[F_idx][6] = f_Iang
+                        
+                        FData[F_idx][11] = f_Vmag
+                        FData[F_idx][12] = f_Vang
+                    if(f_phase == 'C'):
+                        FData[F_idx][7] = f_Imag
+                        FData[F_idx][8] = f_Iang
+                        
+                        FData[F_idx][13] = f_Vmag
+                        FData[F_idx][14] = f_Vang
             else:
-                if(f_phase == 'A'):
-                    FData[F_idx][3] = f_Imag
-                    FData[F_idx][4] = f_Iang
-                    
-                    FData[F_idx][9] = f_Vmag
-                    FData[F_idx][10] = f_Vang
-                if(f_phase == 'B'):
-                    FData[F_idx][5] = f_Imag
-                    FData[F_idx][6] = f_Iang
-                    
-                    FData[F_idx][11] = f_Vmag
-                    FData[F_idx][12] = f_Vang
-                if(f_phase == 'C'):
-                    FData[F_idx][7] = f_Imag
-                    FData[F_idx][8] = f_Iang
-                    
-                    FData[F_idx][13] = f_Vmag
-                    FData[F_idx][14] = f_Vang
-
+                print(f"Error: Could not find AnalysisResultData.Curve in fault analysis results for {fault_ID}")
+                pass
+            
     for fdata in FData:
         Ia = (fdata[3] * np.cos(fdata[4]*(np.pi/180)) ) + ( fdata[3] * np.sin(fdata[4]*(np.pi/180)) )*1j
         Ib = (fdata[5] * np.cos(fdata[6]*(np.pi/180)) ) + ( fdata[5] * np.sin(fdata[6]*(np.pi/180)) )*1j
@@ -569,6 +575,33 @@ def get_Device_Data_RAVENS(data,SysInfo,Step_num):
         Device_Data_CSV[ii]['PVs'] = 1
         Device_Data_CSV[ii]['switchState'] = True
     return Device_Data_CSV
+
+def get_Gen_data(data):
+    # PVS (teated as sources)
+    Gen_data = [x for x in data['AnalysisResult']['OptimalPowerFlow']['OperationsResult.PowerFlows'] if 'EnergySource::' in x['ArPowerFlow.ConductingEquipment']]
+    nGens = len(set([x['ArPowerFlow.ConductingEquipment'] for x in data['AnalysisResult']['OptimalPowerFlow']['OperationsResult.PowerFlows'] if 'PhotoVoltaicUnit::' in x['ArPowerFlow.ConductingEquipment']]))
+    Gens = [dict.fromkeys({'Name', 'Bus', 'Enabled', 'numPhases'}) for x in range(nGens)]
+    ii = 0
+    for Gen_phase in Gen_data:
+        Gen_Name = re.search("PhotoVoltaicUnit::\'(.+)\'",Gen_phase['ArPowerFlow.ConductingEquipment']).group(1)
+        Gen_in_list = Gen_Name in [Gens['Name'] for Gen in Gens]
+        if(Gen_in_list):
+            Bus_idx = None
+            Bus_idx = index_dict(Gens,'Name', Gen_Name)
+            Gens[Bus_idx]['numPhases'] += 1
+        else:
+            Gen_sys_data = get(data['PowerSystemResource']['Equipment']['ConductingEquipment']['EnergyConnection'],Gen_Name,default=-1)
+            if(Gen_sys_data == -1):
+                raise KeyError("Unique entry for BESS {Gen_Name} Not found in PowerSystemResource".format(Gen_Name = Gen_Name))
+            else:
+                Gens[ii]['Name'] = Gen_Name
+                Gens_terminals =get(Gen_sys_data,'Terminal.ConnectivityNode')
+                Gens[ii]['Bus'] = re.search("ConnectivityNode::\'(.+)\'",Gens_terminals).group(1)
+                Gens[ii]['Enabled'] = Gen_sys_data['Equipment.inService']
+                Gens[ii]['numPhases'] = 1
+                ii += 1    
+    return Pvs
+    
 
 def get_system_Data_RAVENS(data,Step_num,include_Fuses = False,HCE_HC=0):
     
