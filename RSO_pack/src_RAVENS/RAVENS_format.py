@@ -600,7 +600,7 @@ def get_Gen_data(data):
                 Gens[ii]['Enabled'] = Gen_sys_data['Equipment.inService']
                 Gens[ii]['numPhases'] = 1
                 ii += 1    
-    return Pvs
+    return Gens
     
 
 def get_system_Data_RAVENS(data,Step_num,include_Fuses = False,HCE_HC=0):
@@ -613,7 +613,7 @@ def get_system_Data_RAVENS(data,Step_num,include_Fuses = False,HCE_HC=0):
     # convert Generation data
     Pvs = get_Pvs_RAVENS(data)
     BESS = get_BESS_RAVENS(data)
-    Gens = []
+    Gens = get_Gen_data(data)
     Switches,Lines,XFMRs,Pvs,BESS = update_states_RAVENS(data,Switches,Lines,XFMRs,Pvs,BESS,Step_num)
     add_Switches_as_lines(Lines,Switches,Buses)
     
